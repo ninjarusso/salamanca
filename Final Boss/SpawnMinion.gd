@@ -2,9 +2,10 @@ extends State
 
 @export var minion_node : PackedScene
 var can_transition: bool = false
+@export var animation_player : AnimationPlayer
 
-func enter():
-	super.enter()
+func on_enter():
+	super()
 	animation_player.play("summon")
 	await animation_player.animation_finished
 	can_transition = true

@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://0swq8evanvan"]
+[gd_scene load_steps=13 format=3 uid="uid://0swq8evanvan"]
 
 [ext_resource type="Texture2D" uid="uid://dfuxpogk8v43e" path="res://Goblin Scene/business_gobliman.png" id="1_e8yaw"]
 [ext_resource type="Script" path="res://Goblin Scene/business_goblin.gd" id="1_hrd8v"]
-[ext_resource type="Texture2D" path="res://shadow.png" id="2_y0vw3"]
 [ext_resource type="Script" path="res://Goblin Scene/FiniteStateMachine.gd" id="4_4hsum"]
 [ext_resource type="Script" path="res://Goblin Scene/enemy_wander_state.gd" id="5_62x4t"]
 [ext_resource type="Script" path="res://Goblin Scene/enemy_chase_state.gd" id="6_go21u"]
@@ -81,7 +80,6 @@ self_modulate = Color(1, 1, 1, 0.392157)
 show_behind_parent = true
 position = Vector2(0, 1)
 scale = Vector2(0.8, 1)
-texture = ExtResource("2_y0vw3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-3, 0, 0, -3, 3, 0, 0, 3)

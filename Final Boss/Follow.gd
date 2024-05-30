@@ -1,15 +1,17 @@
 extends State
 
+@export var animation_player : AnimationPlayer
+
 func _enter_tree():
 	randomize()
 
-func enter():
-	super.enter()
+func on_enter():
+	super()
 	owner.set_physics_process(true)
 	animation_player.play("idle")
 
-func exit():
-	super.exit()
+func on_exit():
+	super()
 	owner.set_physics_process(false)
 
 func transition():

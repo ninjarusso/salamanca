@@ -1,9 +1,12 @@
 extends State
 
 var can_transition: bool = false
+@export var animation_player : AnimationPlayer
 
-func enter():
-	super.enter()
+@onready var player = get_parent().find_child("Player")
+
+func on_enter():
+	super()
 	animation_player.play("skill")
 	await animation_player.animation_finished
 	can_transition = true

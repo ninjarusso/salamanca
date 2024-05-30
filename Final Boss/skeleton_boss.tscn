@@ -806,20 +806,25 @@ script = ExtResource("6_mu2wj")
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("7_q4fc6")
 
-[node name="Follow" type="Node2D" parent="FiniteStateMachine"]
+[node name="Follow" type="Node2D" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("8_y8sk1")
+animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Attack" type="Node2D" parent="FiniteStateMachine"]
+[node name="Attack" type="Node2D" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("10_e0l5p")
+animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Teleport" type="Node2D" parent="FiniteStateMachine"]
+[node name="Teleport" type="Node2D" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("11_bte06")
+animation_player = NodePath("../../AnimationPlayer")
 
-[node name="SpawnMinion" type="Node2D" parent="FiniteStateMachine"]
+[node name="SpawnMinion" type="Node2D" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("12_b044w")
 minion_node = ExtResource("13_np45v")
+animation_player = NodePath("../../AnimationPlayer")
 
-[node name="Death" type="Node2D" parent="FiniteStateMachine"]
+[node name="Death" type="Node2D" parent="FiniteStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("14_gxo2u")
+animation_player = NodePath("../../AnimationPlayer")
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

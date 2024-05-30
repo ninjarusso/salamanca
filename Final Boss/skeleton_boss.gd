@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = get_parent().find_child("player")
+@onready var player = get_parent().find_child("Player")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var progress_bar = $UI/ProgressBar
 

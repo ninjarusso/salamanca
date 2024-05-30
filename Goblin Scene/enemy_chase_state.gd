@@ -10,11 +10,11 @@ signal lost_player
 func _ready() -> void:
 	set_physics_process(false)
 
-func _enter_state() -> void:
+func on_enter() -> void:
 	set_physics_process(true)
 	animator.play("move")
 
-func _exit_state() -> void:
+func on_exit() -> void:
 	set_physics_process(false)
 
 func _physics_process(delta) -> void:
