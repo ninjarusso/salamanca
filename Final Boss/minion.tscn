@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://doqrnvrqxkmk3"]
 
-[ext_resource type="Texture2D" uid="uid://xlooifgc844p" path="res://Undead executioner puppet/png/summonIdle.png" id="1_ncmub"]
-[ext_resource type="Script" path="res://minion.gd" id="1_y451m"]
-[ext_resource type="Texture2D" uid="uid://bsuiyvj86m3ch" path="res://Undead executioner puppet/png/summonAppear.png" id="2_ybm06"]
-[ext_resource type="Texture2D" uid="uid://ch0tqpvwaqh76" path="res://Undead executioner puppet/png/summonDeath.png" id="3_q1t5h"]
+[ext_resource type="Texture2D" uid="uid://xlooifgc844p" path="res://Final Boss/Undead executioner puppet/png/summonIdle.png" id="1_ncmub"]
+[ext_resource type="Script" path="res://Final Boss/minion.gd" id="1_xe0vy"]
+[ext_resource type="Texture2D" uid="uid://bsuiyvj86m3ch" path="res://Final Boss/Undead executioner puppet/png/summonAppear.png" id="2_ybm06"]
+[ext_resource type="Texture2D" uid="uid://ch0tqpvwaqh76" path="res://Final Boss/Undead executioner puppet/png/summonDeath.png" id="3_q1t5h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5tjg"]
 atlas = ExtResource("1_ncmub")
@@ -140,7 +140,7 @@ animations = [{
 [node name="minion" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_y451m")
+script = ExtResource("1_xe0vy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_03pdx")

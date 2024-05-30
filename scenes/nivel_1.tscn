@@ -589,6 +589,7 @@ sources/0 = SubResource("TileSetAtlasSource_6r0j0")
 
 [node name="Node2D" type="TileMap"]
 position = Vector2(984, 726)
+rotation = 1.5708
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_b660n")
 format = 2

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfuxpogk8v43e"
-path="res://.godot/imported/business_gobliman.png-6e4d2a5ee3a1c79cba02eae551ba902a.ctex"
+path="res://.godot/imported/business_gobliman.png-2a354b4c91cfe7beea994190b378ab00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://business_gobliman.png"
-dest_files=["res://.godot/imported/business_gobliman.png-6e4d2a5ee3a1c79cba02eae551ba902a.ctex"]
+source_file="res://Goblin Scene/business_gobliman.png"
+dest_files=["res://.godot/imported/business_gobliman.png-2a354b4c91cfe7beea994190b378ab00.ctex"]
 
 [params]
 
