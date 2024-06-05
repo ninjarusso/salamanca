@@ -5,7 +5,7 @@ extends State
 
 func on_enter() -> void:
 	super()
-	animate2d.animation = "dash"
+	anim_tree["parameters/conditions/roll"] = true
 	move_speed = 550
 	
 func process_physics(delta : float) -> State:
@@ -15,6 +15,5 @@ func process_physics(delta : float) -> State:
 func process_movement() -> void:
 	character.velocity = character.direction * move_speed
 
-
-func _on_animated_sprite_2d_animation_finished():
-		next_state = idle_state
+func _on_animation_tree_animation_finished(anim_name):
+	next_state = idle_state

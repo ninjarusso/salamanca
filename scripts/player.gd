@@ -7,8 +7,8 @@ signal facing_direction_changed(facing_right : bool)
 @export var damage_multiplier : float = 1
 @export var health : float = 5
 
+@onready var anim_tree = $AnimationTree
 @onready var state_machine = $PlayerStateMachine
-@onready var animation_tree : AnimationTree = $AnimationTree
 @onready var sprite_2d = $Sprite2D
 
 var move_speed : float
