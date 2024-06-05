@@ -6,9 +6,10 @@ signal facing_direction_changed(facing_right : bool)
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage_multiplier : float = 1
 @export var health : float = 5
-@export var animate2d : AnimatedSprite2D
 
 @onready var state_machine = $PlayerStateMachine
+@onready var animation_tree : AnimationTree = $AnimationTree
+@onready var sprite_2d = $Sprite2D
 
 var move_speed : float
 var is_dead : bool = false
@@ -29,10 +30,10 @@ func _unhandled_input(event : InputEvent):
 	
 func update_facing_direction() -> void:
 	if direction.x > 0:
-		animate2d.flip_h = false
+		sprite_2d.flip_h = false
 	elif direction.x < 0:
-		animate2d.flip_h = true
-	emit_signal("facing_direction_changed", !animate2d.flip_h)
+		sprite_2d.flip_h = true
+	emit_signal("facing_direction_changed", !sprite_2d.flip_h)
 	
 func take_damage(damage : float) -> void:
 	health -= damage

@@ -7,7 +7,8 @@ extends State
 func on_enter() -> void:
 	super()
 	character.velocity = Vector2.ZERO
-	animate2d.animation = "idle"
+	anim_tree["parameters/conditions/idle"] = true
+	anim_tree["parameters/conditions/is_moving"] = false
 
 func process_physics(delta : float) -> State:
 	process_movement()

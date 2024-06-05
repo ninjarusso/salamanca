@@ -4,7 +4,7 @@ extends Node
 signal interrupt_state(new_state : State)
 
 var character : CharacterBody2D
-var animate2d : AnimatedSprite2D
+var anim_tree : AnimationPlayer
 var next_state : State
 var move_speed : float
 

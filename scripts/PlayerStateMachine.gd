@@ -3,14 +3,15 @@ extends Node
 
 @export var starting_state : State
 @export var current_state : State
-@export var animate2d : AnimatedSprite2D
+
+@onready var anim_tree : AnimationTree = $AnimationTree
 
 signal state_changed(state : State)
 
 func init(character : CharacterBody2D) -> void:
 	for child in get_children():
-		child.character = character
-		child.animate2d = character.animate2d
+		child.character = get_parent()
+		child.anim_tree = anim_tree
 		child.connect("interrupt_state", interrupt_state_change)
 		
 	change_state(starting_state)
