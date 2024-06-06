@@ -1,8 +1,10 @@
-extends State
+extends BossState
 
 @onready var collision = $"../../PlayerDetection/CollisionShape2D"
 @onready var progress_bar = owner.find_child("ProgressBar")
 
+func on_enter():
+	super()
 
 var player_entered: bool = false:
 	set(value):

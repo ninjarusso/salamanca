@@ -1,8 +1,8 @@
 class_name PlayerIdleState
-extends State
+extends PlayerState
 
-@export var move_state : State
-@export var attack_state : State
+@export var move_state : PlayerState
+@export var attack_state : PlayerState
 
 func on_enter() -> void:
 	super()
@@ -10,13 +10,13 @@ func on_enter() -> void:
 	anim_tree["parameters/conditions/idle"] = true
 	anim_tree["parameters/conditions/is_moving"] = false
 
-func process_physics(delta : float) -> State:
+func process_physics(delta : float) -> PlayerState:
 	process_movement()
 	if (character.direction != Vector2.ZERO):
 		return move_state
 	return null
 
-func process_input(event : InputEvent) -> State:
+func process_input(event : InputEvent) -> PlayerState:
 	if event.is_action_pressed("attack"):
 		return attack_state
 	return null

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = get_parent().find_child("player")
+@onready var player = get_parent().find_child("Player")
 @onready var animation = $AnimatedSprite2D
 
 func _ready():

@@ -1,8 +1,7 @@
-extends State
+extends BossState
 
 @export var minion_node : PackedScene
 var can_transition: bool = false
-@export var animation_player : AnimationPlayer
 
 func on_enter():
 	super()

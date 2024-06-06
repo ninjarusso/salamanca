@@ -1,13 +1,13 @@
-class_name State
+class_name PlayerState
 extends Node
 
-signal interrupt_state(new_state : State)
+signal interrupt_state(new_state : PlayerState)
 
 @export var move_speed : float
 
 var character : CharacterBody2D
 var anim_tree : AnimationTree
-var next_state : State
+var next_state : PlayerState
 var animate2d : AnimatedSprite2D
 
 func state_process(delta):
@@ -23,11 +23,11 @@ func on_enter() -> void:
 func on_exit() -> void:
 	pass
 
-func process_input(event : InputEvent) -> State:
+func process_input(event : InputEvent) -> PlayerState:
 	return null
 
-func process_physics(delta : float) -> State:
+func process_physics(delta : float) -> PlayerState:
 	return null
 	
-func process_frame(delta : float) -> State:
+func process_frame(delta : float) -> PlayerState:
 	return null

@@ -1,9 +1,6 @@
-extends State
+extends BossState
 
 var can_transition: bool = false
-@export var animation_player : AnimationPlayer
-
-@onready var player = get_parent().find_child("Player")
 
 func on_enter():
 	super()

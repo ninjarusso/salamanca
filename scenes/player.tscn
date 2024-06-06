@@ -855,10 +855,12 @@ current_state = NodePath("PlayerIdleState")
 script = ExtResource("6_d2g12")
 move_state = NodePath("../PlayerMoveState")
 attack_state = NodePath("../PlayerAttackState")
+move_speed = null
 
 [node name="PlayerAttackState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("7_7solb")
 idle_state = NodePath("../PlayerIdleState")
+move_speed = null
 
 [node name="AttackTimer" type="Timer" parent="PlayerStateMachine/PlayerAttackState"]
 wait_time = 0.3

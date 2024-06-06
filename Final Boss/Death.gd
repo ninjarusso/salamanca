@@ -1,6 +1,4 @@
-extends State
-
-@export var animation_player : AnimationPlayer
+extends BossState
 
 func on_enter():
 	super()

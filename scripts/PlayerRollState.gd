@@ -1,14 +1,14 @@
 class_name PlayerRollState
-extends State
+extends PlayerState
 
-@export var idle_state : State
+@export var idle_state : PlayerState
 
 func on_enter() -> void:
 	super()
 	anim_tree["parameters/conditions/is_moving"] = false
 	anim_tree["parameters/conditions/roll"] = true
 	
-func process_physics(delta : float) -> State:
+func process_physics(delta : float) -> PlayerState:
 	process_movement()
 	return null
 

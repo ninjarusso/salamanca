@@ -1,10 +1,10 @@
 class_name PlayerStateMachine
 extends Node
 
-@export var starting_state : State
-@export var current_state : State
+@export var starting_state : PlayerState
+@export var current_state : PlayerState
 
-signal state_changed(state : State)
+signal state_changed(state : PlayerState)
 
 func init(character : CharacterBody2D) -> void:
 	for child in get_children():
@@ -14,7 +14,7 @@ func init(character : CharacterBody2D) -> void:
 		
 	change_state(starting_state)
 	
-func change_state(new_state : State) -> void:
+func change_state(new_state : PlayerState) -> void:
 	emit_signal("state_changed", new_state)
 	if current_state:
 		current_state.on_exit()
@@ -42,5 +42,5 @@ func process_frame(delta : float) -> void:
 	if new_state:
 		change_state(new_state)
  
-func interrupt_state_change(new_state : State) -> void:
+func interrupt_state_change(new_state : PlayerState) -> void:
 	change_state(new_state)
