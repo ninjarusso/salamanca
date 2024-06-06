@@ -1,5 +1,5 @@
 class_name BoarIdleState
-extends State
+extends BoarState
 
 @export var wander_timer : Timer
 @export var ray : RayCast2D

@@ -1,5 +1,5 @@
 class_name EnemyChaseState
-extends State
+extends GoblinState
 
 @export var actor: Enemy
 @export var animator: AnimatedSprite2D
@@ -20,7 +20,7 @@ func on_exit() -> void:
 func _physics_process(delta) -> void:
 	animator.scale.x = -sign(actor.velocity.x)
 	if animator.scale.x == 0.0: animator.scale.x == 1.0
-	var direction = Vector2.ZERO.direction_to(actor.get_local_mouse_position())
+	var direction = Vector2.ZERO.direction_to(actor.player.position)
 	actor.velocity = actor.velocity.move_toward(direction * actor.max_speed, actor.acceleration * delta)
 	actor.move_and_slide()
 	if vision_cast.is_colliding():

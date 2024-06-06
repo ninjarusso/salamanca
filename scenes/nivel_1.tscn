@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjwxcop3bcwww"]
+[gd_scene load_steps=7 format=3 uid="uid://cjwxcop3bcwww"]
 
 [ext_resource type="Texture2D" uid="uid://c12srgap5c7mh" path="res://assets/WhatsApp Image 2024-05-09 at 4.04.03 PM.jpeg" id="1_gl3o3"]
 [ext_resource type="PackedScene" uid="uid://drt6ek66rh3m1" path="res://scenes/player.tscn" id="3_41cnm"]
 [ext_resource type="PackedScene" uid="uid://dfjsxfcg7563o" path="res://Final Boss/skeleton_boss.tscn" id="3_e7t24"]
+[ext_resource type="PackedScene" uid="uid://0swq8evanvan" path="res://Goblin Scene/business_goblin.tscn" id="4_av26h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6r0j0"]
 texture = ExtResource("1_gl3o3")
@@ -599,4 +600,7 @@ layer_0/tile_data = PackedInt32Array(1048563, 524288, 9, 983027, 524288, 9, 9174
 position = Vector2(-170, 558.5)
 
 [node name="SkeletonBoss" parent="." instance=ExtResource("3_e7t24")]
-position = Vector2(547.5, -1132.5)
+position = Vector2(555, -1136.5)
+
+[node name="BusinessGoblin" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-212, -245.5)
