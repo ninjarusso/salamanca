@@ -21,6 +21,7 @@ func change_state(new_state : State) -> void:
 		
 	current_state = new_state
 	current_state.on_enter()
+	current_state.next_state = null
 	
 func _physics_process(delta):
 	if(current_state.next_state != null):

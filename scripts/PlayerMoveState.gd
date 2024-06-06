@@ -9,7 +9,6 @@ func on_enter() -> void:
 	super()
 	anim_tree["parameters/conditions/idle"] = false
 	anim_tree["parameters/conditions/is_moving"] = true
-	move_speed = 400
 	
 func process_physics(delta : float) -> State :
 	process_movement()

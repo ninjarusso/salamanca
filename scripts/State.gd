@@ -3,10 +3,11 @@ extends Node
 
 signal interrupt_state(new_state : State)
 
+@export var move_speed : float
+
 var character : CharacterBody2D
 var anim_tree : AnimationTree
 var next_state : State
-var move_speed : float
 var animate2d : AnimatedSprite2D
 
 func state_process(delta):
@@ -16,6 +17,7 @@ func state_input(event : InputEvent):
 	pass
 
 func on_enter() -> void:
+	character.move_speed = move_speed
 	pass
 
 func on_exit() -> void:

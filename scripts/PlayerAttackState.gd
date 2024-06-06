@@ -26,8 +26,8 @@ func process_input(event : InputEvent) -> State:
 func _on_animation_tree_animation_finished(anim_name):
 	if(anim_name == "attack1"):
 		if(attack_timer.is_stopped()):
-			emit_signal("interrupt_state", idle_state)
+			next_state = idle_state
 		else:
 			anim_tree["parameters/playback"].travel("attack2")
 	if(anim_name == "attack2"):
-		emit_signal("interrupt_state", idle_state)
+		next_state = idle_state
