@@ -604,3 +604,27 @@ position = Vector2(555, -1136.5)
 
 [node name="BusinessGoblin" parent="." instance=ExtResource("4_av26h")]
 position = Vector2(-212, -245.5)
+
+[node name="BusinessGoblin2" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-8, -309.5)
+
+[node name="BusinessGoblin3" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-130, -653)
+
+[node name="BusinessGoblin4" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-16, -721)
+
+[node name="BusinessGoblin5" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-120, -195)
+
+[node name="BusinessGoblin6" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-339, -108)
+
+[node name="BusinessGoblin7" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-24, -103)
+
+[node name="BusinessGoblin8" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-329, -363.5)
+
+[node name="BusinessGoblin9" parent="." instance=ExtResource("4_av26h")]
+position = Vector2(-251.5, -199)
