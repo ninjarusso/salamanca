@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lri1kmql2xkq"]
+
+[ext_resource type="Script" path="res://scripts/PickupVida.gd" id="1_v5jik"]
+
+[node name="PickupVida" type="Area2D"]
+script = ExtResource("1_v5jik")

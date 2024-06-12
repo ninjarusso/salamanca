@@ -44,3 +44,7 @@ func take_damage(damage : float) -> void:
 	else:
 		print(self.name + " has taken " + str(damage) + " damage, " + str(health) + " hp remaining")
 		emit_signal("hurt")
+
+func recover_health(amount: float):
+	health = min(health + amount, health)
+	print("Health recovered: ", health)
