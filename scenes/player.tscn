@@ -952,6 +952,7 @@ transitions = ["run", "roll", SubResource("AnimationNodeStateMachineTransition_8
 height = 38.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 30
 script = ExtResource("1_ee2jx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

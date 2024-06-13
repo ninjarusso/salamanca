@@ -5,8 +5,6 @@ extends GoblinState
 @export var animator: AnimatedSprite2D
 @export var vision_cast: RayCast2D
 
-@onready var player = get_parent().find_child("Player")
-
 signal found_player
 
 func _ready():

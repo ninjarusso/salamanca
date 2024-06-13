@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://0swq8evanvan"]
+[gd_scene load_steps=17 format=3 uid="uid://0swq8evanvan"]
 
 [ext_resource type="Texture2D" uid="uid://dfuxpogk8v43e" path="res://Goblin Scene/business_gobliman.png" id="1_e8yaw"]
 [ext_resource type="Script" path="res://Goblin Scene/business_goblin.gd" id="1_hrd8v"]
@@ -6,28 +6,33 @@
 [ext_resource type="Script" path="res://Goblin Scene/enemy_wander_state.gd" id="5_62x4t"]
 [ext_resource type="Script" path="res://scripts/EnemyHurtBox.gd" id="6_3nxp2"]
 [ext_resource type="Script" path="res://Goblin Scene/enemy_chase_state.gd" id="6_go21u"]
+[ext_resource type="Script" path="res://Goblin Scene/enemy_hurt_state.gd" id="6_hs6c7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvdyw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu1rm"]
 atlas = ExtResource("1_e8yaw")
 region = Rect2(0, 0, 18, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3o3v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmugg"]
+atlas = ExtResource("1_e8yaw")
+region = Rect2(0, 0, 18, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsbig"]
 atlas = ExtResource("1_e8yaw")
 region = Rect2(18, 0, 18, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1u4wh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_64k16"]
 atlas = ExtResource("1_e8yaw")
 region = Rect2(36, 0, 18, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx7om"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6osi"]
 atlas = ExtResource("1_e8yaw")
 region = Rect2(54, 0, 18, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qb80a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ynrf"]
 atlas = ExtResource("1_e8yaw")
 region = Rect2(72, 0, 18, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6uds0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekhd4"]
 atlas = ExtResource("1_e8yaw")
 region = Rect2(90, 0, 18, 17)
 
@@ -35,7 +40,7 @@ region = Rect2(90, 0, 18, 17)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bvdyw")
+"texture": SubResource("AtlasTexture_xu1rm")
 }],
 "loop": true,
 "name": &"idle",
@@ -43,22 +48,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bvdyw")
+"texture": SubResource("AtlasTexture_pmugg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n3o3v")
+"texture": SubResource("AtlasTexture_dsbig")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1u4wh")
+"texture": SubResource("AtlasTexture_64k16")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fx7om")
+"texture": SubResource("AtlasTexture_h6osi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qb80a")
+"texture": SubResource("AtlasTexture_8ynrf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6uds0")
+"texture": SubResource("AtlasTexture_ekhd4")
 }],
 "loop": true,
 "name": &"move",
@@ -71,15 +76,17 @@ height = 16.0
 
 [node name="BusinessGoblin" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 19
 script = ExtResource("1_hrd8v")
 acceleration = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -6)
+scale = Vector2(1, 1.137)
 sprite_frames = SubResource("SpriteFrames_tt0s6")
-animation = &"idle"
+animation = &"move"
 autoplay = "idle"
+frame_progress = 0.205587
 offset = Vector2(1, -1)
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
@@ -106,6 +113,9 @@ script = ExtResource("6_go21u")
 actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 vision_cast = NodePath("../../RayCast2D")
+
+[node name="EnemyHurtState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_hs6c7")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -4)

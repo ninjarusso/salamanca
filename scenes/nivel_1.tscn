@@ -585,7 +585,7 @@ texture = ExtResource("1_gl3o3")
 10:16/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_b660n"]
-physics_layer_0/collision_layer = 15
+physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_6r0j0")
 
@@ -601,7 +601,7 @@ layer_0/tile_data = PackedInt32Array(1048563, 524288, 9, 983027, 524288, 9, 9174
 position = Vector2(-170, 558.5)
 
 [node name="SkeletonBoss" parent="." instance=ExtResource("3_e7t24")]
-position = Vector2(555, -1136.5)
+position = Vector2(4103, 1527.5)
 
 [node name="BusinessGoblin" parent="." instance=ExtResource("4_av26h")]
 position = Vector2(-212, -245.5)
