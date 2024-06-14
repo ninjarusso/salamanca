@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://lri1kmql2xkq"]
+[gd_scene load_steps=4 format=3 uid="uid://lri1kmql2xkq"]
 
 [ext_resource type="Script" path="res://scripts/PickupVida.gd" id="1_v5jik"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y50an"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prh3u"]
+size = Vector2(36, 34)
+
 [node name="PickupVida" type="Area2D"]
 script = ExtResource("1_v5jik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(541.938, 302.938)
+scale = Vector2(36.125, 34.125)
+texture = SubResource("PlaceholderTexture2D_y50an")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(542, 303)
+shape = SubResource("RectangleShape2D_prh3u")
