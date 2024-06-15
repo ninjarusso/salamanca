@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 signal facing_direction_changed(facing_right : bool)
+signal dead
+signal hurt
 
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage_multiplier : float = 1
@@ -41,6 +43,7 @@ func take_damage(damage : float) -> void:
 	if health < 0:
 		emit_signal("dead")
 		is_dead = true
+		print(self.name + " MIGUE, RESCATATE CON LA ANIMACIÓN DE MUERTE QUE NO ME PUEDO MORIR")
 	else:
 		print(self.name + " has taken " + str(damage) + " damage, " + str(health) + " hp remaining")
 		emit_signal("hurt")

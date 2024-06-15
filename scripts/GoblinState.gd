@@ -1,9 +1,9 @@
 class_name GoblinState
 extends Node
 
-var player
-
 signal state_finished
+
+@export var move_speed : float
 
 func on_enter() -> void:
 	pass

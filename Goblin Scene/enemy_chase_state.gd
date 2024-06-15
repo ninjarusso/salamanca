@@ -4,8 +4,10 @@ extends GoblinState
 @export var actor: Enemy
 @export var animator: AnimatedSprite2D
 @export var vision_cast: RayCast2D
+@onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 signal lost_player
+signal explode(body)
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -18,10 +20,12 @@ func on_exit() -> void:
 	set_physics_process(false)
 
 func _physics_process(delta) -> void:
-	animator.scale.x = -sign(actor.velocity.x)
-	if animator.scale.x == 0.0: animator.scale.x == 1.0
-	var direction = Vector2.ZERO.direction_to(actor.player.position)
-	actor.velocity = actor.velocity.move_toward(direction * actor.max_speed, actor.acceleration * delta)
+	var direction = Vector2.ZERO.direction_to(player.get_global_position() - actor.get_global_position())
+	actor.velocity = actor.velocity.move_toward(direction * move_speed, actor.acceleration * delta)
 	actor.move_and_slide()
 	if vision_cast.is_colliding():
 		lost_player.emit()
+
+func _on_attack_range_body_entered(body):
+	if body.is_in_group("Player"):
+		explode.emit()
