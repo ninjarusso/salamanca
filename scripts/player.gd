@@ -49,5 +49,7 @@ func take_damage(damage : float) -> void:
 		emit_signal("hurt")
 
 func recover_health(amount: float):
-	health = min(health + amount, health)
+	health += amount
+	if health < 5:
+		health = 5
 	print("Health recovered: ", health)

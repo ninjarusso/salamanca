@@ -8,7 +8,7 @@ signal state_changed(state : PlayerState)
 
 func init(character : CharacterBody2D) -> void:
 	for child in get_children():
-		child.character = get_parent()
+		child.character = character
 		child.anim_tree = character.anim_tree
 		child.connect("interrupt_state", interrupt_state_change)
 		

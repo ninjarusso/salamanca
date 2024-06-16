@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjwxcop3bcwww"]
+[gd_scene load_steps=9 format=3 uid="uid://cjwxcop3bcwww"]
 
 [ext_resource type="Texture2D" uid="uid://c12srgap5c7mh" path="res://assets/WhatsApp Image 2024-05-09 at 4.04.03 PM.jpeg" id="1_gl3o3"]
 [ext_resource type="PackedScene" uid="uid://drt6ek66rh3m1" path="res://scenes/player.tscn" id="3_41cnm"]
 [ext_resource type="PackedScene" uid="uid://dfjsxfcg7563o" path="res://Final Boss/skeleton_boss.tscn" id="3_e7t24"]
 [ext_resource type="PackedScene" uid="uid://0swq8evanvan" path="res://Goblin Scene/business_goblin.tscn" id="4_av26h"]
 [ext_resource type="PackedScene" uid="uid://lri1kmql2xkq" path="res://scenes/pickup_vida.tscn" id="5_eet0h"]
+[ext_resource type="PackedScene" uid="uid://y7orxch5h48q" path="res://scenes/minotauro.tscn" id="6_rbd8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6r0j0"]
 texture = ExtResource("1_gl3o3")
@@ -615,3 +616,6 @@ position = Vector2(-295, -309)
 
 [node name="PickupVida" parent="." instance=ExtResource("5_eet0h")]
 position = Vector2(-742.5, -93.5)
+
+[node name="Minotauro" parent="." instance=ExtResource("6_rbd8f")]
+position = Vector2(-202.5, -310.5)

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var health_healed: int = 1.25
+@export var health_healed: int = 2
 
 func _on_PickupVida_body_entered(body):
 	if body.is_in_group("Player"):
