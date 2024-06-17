@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8weiis7sfq7u"]
+[gd_scene load_steps=8 format=3 uid="uid://b3okj053i7672"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0rfpv"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_r2xew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfn5"]
 bg_color = Color(0, 0.630867, 0.97535, 1)
@@ -44,10 +44,10 @@ border_width_top = 10
 border_width_right = 15
 border_width_bottom = 10
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 layer = 2
-script = ExtResource("1_0rfpv")
+script = ExtResource("1_r2xew")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -73,13 +73,13 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "PLAY"
+text = "CONTINUE"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "EXIT"
+text = "MAIN MENU"
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
