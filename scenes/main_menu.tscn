@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8weiis7sfq7u"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0rfpv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfn5"]
+bg_color = Color(0, 0.630867, 0.97535, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px71y"]
+bg_color = Color(0, 0.535878, 0.832652, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t16g"]
+bg_color = Color(0.331211, 0.712271, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1kov"]
+bg_color = Color(0, 0.630867, 0.97535, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="Theme" id="Theme_2m8uv"]
+Button/styles/disabled = SubResource("StyleBoxFlat_0nfn5")
+Button/styles/focus = SubResource("StyleBoxFlat_px71y")
+Button/styles/hover = SubResource("StyleBoxFlat_6t16g")
+Button/styles/normal = SubResource("StyleBoxFlat_b1kov")
+Button/styles/pressed = SubResource("StyleBoxFlat_px71y")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij2ym"]
+bg_color = Color(0.465425, 0.471333, 0.473863, 1)
+border_width_left = 15
+border_width_top = 10
+border_width_right = 15
+border_width_bottom = 10
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_0rfpv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_2m8uv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ij2ym")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
