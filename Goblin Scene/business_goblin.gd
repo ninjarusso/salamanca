@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var acceleration = 50.0
+@export var acceleration : float
 @export var health : float = 1.0
 @export var enemy_damage : float = 1.0
 
@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 var is_dead : bool = false
+var player_in_range : bool = false
 signal hurt
 signal dead
 

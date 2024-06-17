@@ -29,3 +29,8 @@ func _physics_process(delta) -> void:
 func _on_attack_range_body_entered(body):
 	if body.is_in_group("Player"):
 		explode.emit()
+		actor.player_in_range = true
+
+func _on_attack_range_body_exited(body):
+	if body.is_in_group("Player"):
+		actor.player_in_range = false

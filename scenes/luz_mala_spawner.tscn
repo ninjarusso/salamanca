@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://dd0d0yorl8qxb"]
+
+[ext_resource type="Texture2D" uid="uid://5os25acf16w3" path="res://Goblin Scene/Luz Mala.png" id="1_5fira"]
+[ext_resource type="Script" path="res://scripts/luz_mala_spawner.gd" id="2_dyhtp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibjle"]
+atlas = ExtResource("1_5fira")
+region = Rect2(0, 0, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k277h"]
+atlas = ExtResource("1_5fira")
+region = Rect2(59, 0, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlj18"]
+atlas = ExtResource("1_5fira")
+region = Rect2(118, 0, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e70ou"]
+atlas = ExtResource("1_5fira")
+region = Rect2(177, 0, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pmbb"]
+atlas = ExtResource("1_5fira")
+region = Rect2(236, 0, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ocs6"]
+atlas = ExtResource("1_5fira")
+region = Rect2(295, 0, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7v5b"]
+atlas = ExtResource("1_5fira")
+region = Rect2(0, 60, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bv6h"]
+atlas = ExtResource("1_5fira")
+region = Rect2(59, 60, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycwjy"]
+atlas = ExtResource("1_5fira")
+region = Rect2(118, 60, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpio4"]
+atlas = ExtResource("1_5fira")
+region = Rect2(177, 60, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq8fj"]
+atlas = ExtResource("1_5fira")
+region = Rect2(236, 60, 59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddkei"]
+atlas = ExtResource("1_5fira")
+region = Rect2(295, 60, 59, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nocij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibjle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k277h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlj18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e70ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pmbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ocs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7v5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bv6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycwjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpio4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq8fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddkei")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="LuzMalaSpawner" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_nocij")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("2_dyhtp")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
