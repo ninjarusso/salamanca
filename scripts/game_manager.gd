@@ -13,6 +13,11 @@ func start_game():
 		return
 	
 	transition_to_scene(level_1.resource_path)
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		pause_game()
+	
 
 func exit_game():
 	get_tree().quit()
