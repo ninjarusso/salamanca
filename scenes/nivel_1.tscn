@@ -601,6 +601,10 @@ layer_0/tile_data = PackedInt32Array(1048563, 524288, 9, 983027, 524288, 9, 9174
 
 [node name="Player" parent="." instance=ExtResource("3_41cnm")]
 position = Vector2(1177, -1650.5)
+direction = null
+damage_multiplier = null
+health = null
+player_damage = null
 
 [node name="SkeletonBoss" parent="." instance=ExtResource("3_e7t24")]
 position = Vector2(4103, 1527.5)
