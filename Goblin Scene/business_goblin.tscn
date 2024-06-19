@@ -289,7 +289,7 @@ radius = 16.0
 
 [node name="BusinessGoblin" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 19
+collision_mask = 17
 script = ExtResource("1_hrd8v")
 acceleration = 100.0
 

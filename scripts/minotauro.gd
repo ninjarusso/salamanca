@@ -2,10 +2,12 @@ class_name Minotauro
 extends CharacterBody2D
 
 @export var health : float = 15
+@export var damage : float = 3
 
 @onready var minotauro_state_machine = $MinotauroStateMachine as MinotauroStateMachine
 @onready var minotauro_idle_state = $MinotauroStateMachine/MinotauroIdleState as MinotauroIdleState
 @onready var minotauro_chase_state = $MinotauroStateMachine/MinotauroChaseState as MinotauroChaseState
+@onready var minotauro_attack_state = $MinotauroStateMachine/MinotauroAttackState as MinotauroAttackState
 @onready var player = get_tree().get_nodes_in_group("Player")[0]
 @onready var sprite : Sprite2D = $Sprite2D
 
@@ -32,9 +34,13 @@ func update_facing_direction() -> void:
 func _ready():
 	minotauro_idle_state.connect("found_player", _on_found_player)
 	minotauro_chase_state.connect("player_lost", _on_player_lost)
+	minotauro_attack_state.connect("player_out_of_range", _on_player_out_of_range)
 
 func _on_found_player():
 	minotauro_state_machine.switch_state(minotauro_chase_state)
 	
 func _on_player_lost():
 	minotauro_state_machine.switch_state(minotauro_idle_state)
+	
+func _on_player_out_of_range():
+	minotauro_state_machine.switch_state(minotauro_chase_state)
