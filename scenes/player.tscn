@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://drt6ek66rh3m1"]
+[gd_scene load_steps=76 format=3 uid="uid://drt6ek66rh3m1"]
 
 [ext_resource type="Texture2D" uid="uid://cr7u62wnovri8" path="res://assets/player/04 Roll B.png" id="1_dyl8n"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ee2jx"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerHitBox.gd" id="16_3h6po"]
 [ext_resource type="Script" path="res://scripts/PlayerDeathState.gd" id="16_68qot"]
 [ext_resource type="Script" path="res://scripts/PlayerHitBoxCollisionPolygon2D.gd" id="18_sbvf8"]
+[ext_resource type="Script" path="res://scripts/PlayerHurtBox.gd" id="22_k0gmn"]
 
 [sub_resource type="Animation" id="Animation_sadml"]
 length = 0.001
@@ -1057,13 +1058,13 @@ transitions = ["run", "roll", SubResource("AnimationNodeStateMachineTransition_8
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhqdf"]
 height = 38.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbwn7"]
+height = 38.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 30
+collision_mask = 28
 script = ExtResource("1_ee2jx")
-direction = null
-damage_multiplier = null
-health = null
-player_damage = null
+health = 6.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
@@ -1095,6 +1096,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_xhqdf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state")]
 script = ExtResource("5_dh832")
@@ -1120,15 +1122,15 @@ one_shot = true
 
 [node name="PlayerMoveState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "roll_state")]
 script = ExtResource("8_y0dq8")
-move_speed = 400.0
 idle_state = NodePath("../PlayerIdleState")
 attack_state = NodePath("../PlayerAttackState")
 roll_state = NodePath("../PlayerRollState")
+move_speed = 400.0
 
 [node name="PlayerRollState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("9_75iq2")
-move_speed = 550.0
 idle_state = NodePath("../PlayerIdleState")
+move_speed = 550.0
 
 [node name="PlayerDeathState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("16_68qot")
@@ -1155,6 +1157,15 @@ disabled = true
 script = ExtResource("18_sbvf8")
 facing_left_scale = Vector2(-1, 1)
 facing_right_scale = Vector2(1, 1)
+
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("22_k0gmn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_vbwn7")
 
 [connection signal="dead" from="." to="PlayerStateMachine/PlayerDeathState" method="_on_player_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="PlayerStateMachine/PlayerAttackState" method="_on_animation_tree_animation_finished"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="La Salamanca"
-run/main_scene="res://scenes/nivel_1.tscn"
+run/main_scene="res://scenes/nivel_testR.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

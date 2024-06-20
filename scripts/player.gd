@@ -7,7 +7,7 @@ signal hurt
 
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage_multiplier : float = 1
-@export var health : float = 500
+@export var health : float = 15
 @export var player_damage : float = 2
 
 @onready var anim_tree = $AnimationTree

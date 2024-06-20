@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://y7orxch5h48q"]
+[gd_scene load_steps=41 format=3 uid="uid://y7orxch5h48q"]
 
 [ext_resource type="Script" path="res://scripts/minotauro.gd" id="1_pvmtl"]
 [ext_resource type="Texture2D" uid="uid://0s220e0r2i5v" path="res://assets/minotauro/MinotauroIddle.png" id="1_rg08q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/MinotauroIdleState.gd" id="7_btxek"]
 [ext_resource type="Script" path="res://scripts/MinotauroChaseState.gd" id="9_hlvbc"]
 [ext_resource type="Script" path="res://scripts/MinotauroAttackState.gd" id="10_qt62f"]
+[ext_resource type="Script" path="res://scripts/EnemyHitBox.gd" id="11_ubu4d"]
 
 [sub_resource type="Animation" id="Animation_t6yvt"]
 length = 0.001
@@ -84,6 +85,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.20625, 0.20625)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerDetection:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_n6xdk"]
@@ -162,19 +175,17 @@ tracks/5/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 1, 0]
 }
-tracks/6/type = "method"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MinotauroStateMachine/MinotauroAttackState")
+tracks/6/path = NodePath("PlayerDetection:monitorable")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack"
-}]
+"times": PackedFloat32Array(0, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_rd36c"]
@@ -591,6 +602,7 @@ size = Vector2(65, 20)
 
 [node name="Minotauro" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_pvmtl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -647,7 +659,8 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_npog0")
 
 [node name="AttackRange" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 8
+script = ExtResource("11_ubu4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 position = Vector2(-0.5, 0)
