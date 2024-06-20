@@ -1233,4 +1233,4 @@ position = Vector2(589, 366)
 position = Vector2(-381, 279)
 
 [node name="LuzMalaSpawner" parent="." instance=ExtResource("5_ly38g")]
-position = Vector2(930, 368)
+position = Vector2(520, 130)

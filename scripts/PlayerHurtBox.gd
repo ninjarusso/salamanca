@@ -1,9 +1,6 @@
 class_name PlayerHurtBox
 extends Area2D
 
-func _ready() -> void:
-	self.connect("area_entered", _on_area_entered)
-	
 func _init() -> void:
 	collision_layer = 0
 	collision_mask = 8

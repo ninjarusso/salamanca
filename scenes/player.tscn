@@ -1170,3 +1170,4 @@ shape = SubResource("CapsuleShape2D_vbwn7")
 [connection signal="dead" from="." to="PlayerStateMachine/PlayerDeathState" method="_on_player_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="PlayerStateMachine/PlayerAttackState" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="PlayerStateMachine/PlayerRollState" method="_on_animation_tree_animation_finished"]
+[connection signal="area_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_area_entered"]

@@ -2,12 +2,14 @@ class_name Minotauro
 extends CharacterBody2D
 
 @export var health : float = 15
-@export var damage : float = 3
+@export var enemy_damage : float = 3
 
 @onready var minotauro_state_machine = $MinotauroStateMachine as MinotauroStateMachine
 @onready var minotauro_idle_state = $MinotauroStateMachine/MinotauroIdleState as MinotauroIdleState
 @onready var minotauro_chase_state = $MinotauroStateMachine/MinotauroChaseState as MinotauroChaseState
 @onready var minotauro_attack_state = $MinotauroStateMachine/MinotauroAttackState as MinotauroAttackState
+@onready var minotauro_hurt_state = $MinotauroStateMachine/MinotauroHurtState as MinotauroHurtState
+
 @onready var player = get_tree().get_nodes_in_group("Player")[0]
 @onready var sprite : Sprite2D = $Sprite2D
 
@@ -44,3 +46,12 @@ func _on_player_lost():
 	
 func _on_player_out_of_range():
 	minotauro_state_machine.switch_state(minotauro_chase_state)
+
+func take_damage(damage : float) -> void:
+	health -= damage
+	if health < 0:
+		emit_signal("dead")
+		is_dead = true
+	else:
+		print(self.name + " has taken " + str(damage) + " damage, " + str(health) + " hp remaining")
+		emit_signal("hurt")
