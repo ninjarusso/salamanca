@@ -35,7 +35,7 @@ func update_facing_direction() -> void:
 	
 func take_damage(damage : float) -> void:
 	health -= damage
-	if health < 0:
+	if health <= 0:
 		emit_signal("dead")
 		is_dead = true
 		queue_free()

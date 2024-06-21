@@ -21,17 +21,19 @@ signal hurt
 signal dead
 
 func _physics_process(delta):
-	if minotauro_state_machine.current_state == minotauro_chase_state:
-		direction = player.position - position
-		velocity = direction.normalized() * move_speed
-	update_facing_direction()
-	move_and_slide()
+	if !is_dead:
+		if minotauro_state_machine.current_state == minotauro_chase_state:
+			direction = player.position - position
+			velocity = direction.normalized() * move_speed
+		update_facing_direction()
+		move_and_slide()
 
 func update_facing_direction() -> void:
-	if direction.x < 0:
-		sprite.flip_h = false
-	else:
-		sprite.flip_h = true
+	if !is_dead:
+		if direction.x < 0:
+			sprite.flip_h = false
+		else:
+			sprite.flip_h = true
 		
 func _ready():
 	minotauro_idle_state.connect("found_player", _on_found_player)
@@ -39,17 +41,20 @@ func _ready():
 	minotauro_attack_state.connect("player_out_of_range", _on_player_out_of_range)
 
 func _on_found_player():
-	minotauro_state_machine.switch_state(minotauro_chase_state)
+	if !is_dead:
+		minotauro_state_machine.switch_state(minotauro_chase_state)
 	
 func _on_player_lost():
-	minotauro_state_machine.switch_state(minotauro_idle_state)
+	if !is_dead:
+		minotauro_state_machine.switch_state(minotauro_idle_state)
 	
 func _on_player_out_of_range():
-	minotauro_state_machine.switch_state(minotauro_chase_state)
+	if !is_dead:
+		minotauro_state_machine.switch_state(minotauro_chase_state)
 
 func take_damage(damage : float) -> void:
 	health -= damage
-	if health < 0:
+	if health <= 0:
 		emit_signal("dead")
 		is_dead = true
 	else:
