@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dfjsxfcg7563o"]
+[gd_scene load_steps=81 format=3 uid="uid://dfjsxfcg7563o"]
 
 [ext_resource type="Texture2D" uid="uid://bpqoeypk5vh1a" path="res://Final Boss/Undead executioner puppet/png/attacking.png" id="1_2iudi"]
 [ext_resource type="Script" path="res://Final Boss/skeleton_boss.gd" id="1_7hqm6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Final Boss/SpawnMinion.gd" id="12_b044w"]
 [ext_resource type="PackedScene" uid="uid://doqrnvrqxkmk3" path="res://Final Boss/minion.tscn" id="13_np45v"]
 [ext_resource type="Script" path="res://Final Boss/Death.gd" id="14_gxo2u"]
+[ext_resource type="Script" path="res://scripts/EnemyHurtBox.gd" id="15_gvcvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oe4vq"]
 atlas = ExtResource("1_2iudi")
@@ -486,6 +487,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/Attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit_target"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_myt5v"]
 resource_name = "attack_2"
@@ -514,6 +529,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/Attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.375),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit_target"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ynkks"]
@@ -720,14 +749,16 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nlkk"]
 height = 54.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhhw8"]
-size = Vector2(200, 200)
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wyrt"]
+radius = 300.0
 
 [node name="SkeletonBoss" type="CharacterBody2D"]
 scale = Vector2(2.5, 2.5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_7hqm6")
+health = 30.0
+enemy_damage = 6.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4q5wt")
@@ -748,7 +779,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 scale = Vector2(0.7, 0.7)
-shape = SubResource("RectangleShape2D_nhhw8")
+shape = SubResource("CircleShape2D_7wyrt")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -823,5 +854,12 @@ minion_node = ExtResource("13_np45v")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("14_gxo2u")
+
+[node name="EnemyHurtBox" type="Area2D" parent="."]
+script = ExtResource("15_gvcvj")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EnemyHurtBox"]
+position = Vector2(-6, 0.8)
+polygon = PackedVector2Array(-4, 31.6, 37.6, 1.2, 17.6, -10.8, 16.8, -29.2, 1.6, -27.2, -8.8, -25.2, -14, -1.2, -11.6, 18)
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

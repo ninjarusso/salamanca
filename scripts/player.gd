@@ -6,9 +6,9 @@ signal dead
 signal hurt
 
 @export var direction : Vector2 = Vector2.ZERO
-@export var damage_multiplier : float = 1
-@export var health : float = 15
-@export var player_damage : float = 2
+@export var damage_multiplier : float
+@export var health : float
+@export var player_damage : float
 
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = $PlayerStateMachine

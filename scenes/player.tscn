@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dt7jwhd7ljyqu" path="res://assets/player/01 Idle B.png" id="1_mmthy"]
 [ext_resource type="Script" path="res://scripts/PlayerStateMachine.gd" id="5_dh832"]
 [ext_resource type="Texture2D" uid="uid://dbs42g5o0gipd" path="res://assets/player/Female Character Attack 02 copy.png" id="5_uwy1s"]
+[ext_resource type="Texture2D" uid="uid://ctpf8o4c8onqg" path="res://assets/player/Gaucho dead.png" id="6_4minr"]
 [ext_resource type="Texture2D" uid="uid://c577aggj6bia8" path="res://assets/player/Female Character Attack 03 copy.png" id="6_bq2rp"]
 [ext_resource type="Script" path="res://scripts/PlayerIdleState.gd" id="6_d2g12"]
-[ext_resource type="Texture2D" uid="uid://n3c268dbckbg" path="res://assets/player/Gaucho dead 3-sheet.png" id="7_5r0qe"]
 [ext_resource type="Script" path="res://scripts/PlayerAttackState.gd" id="7_7solb"]
 [ext_resource type="Texture2D" uid="uid://brldohoqqvhnw" path="res://assets/player/02 Run gaucho png.png" id="8_4kkvr"]
 [ext_resource type="Script" path="res://scripts/PlayerMoveState.gd" id="8_y0dq8"]
@@ -347,7 +347,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_5r0qe")]
+"values": [ExtResource("6_4minr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -799,7 +799,9 @@ height = 38.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 28
 script = ExtResource("1_ee2jx")
-health = 6.0
+damage_multiplier = 1.0
+health = 10.0
+player_damage = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)

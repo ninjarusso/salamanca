@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n3c268dbckbg"
-path="res://.godot/imported/Gaucho dead 3-sheet.png-d861a81b9efa59827988cad37b10ea6d.ctex"
+uid="uid://ctpf8o4c8onqg"
+path="res://.godot/imported/Gaucho dead.png-279d8ca4eab817ef7dd7afdbac13da69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Gaucho dead 3-sheet.png"
-dest_files=["res://.godot/imported/Gaucho dead 3-sheet.png-d861a81b9efa59827988cad37b10ea6d.ctex"]
+source_file="res://assets/player/Gaucho dead.png"
+dest_files=["res://.godot/imported/Gaucho dead.png-279d8ca4eab817ef7dd7afdbac13da69.ctex"]
 
 [params]
 

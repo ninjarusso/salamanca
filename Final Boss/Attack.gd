@@ -1,13 +1,19 @@
 extends BossState
 
+var target : CharacterBody2D
+
 func on_enter():
 	super()
 	combo()
+	target = owner.player
 
 func attack(move = "1"):
 	animation_player.play("attack_" + move)
 	await animation_player.animation_finished
-
+	
+func hit_target():
+	if target != null:
+		target.take_damage(owner.enemy_damage)
 
 func combo():
 	var move_set = ["1","1","2"]
@@ -19,3 +25,4 @@ func combo():
 func transition():
 	if owner.direction.length() > 40:
 		get_parent().change_state("Follow")
+		target = null

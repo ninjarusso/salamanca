@@ -1,8 +1,8 @@
 class_name Minotauro
 extends CharacterBody2D
 
-@export var health : float = 15
-@export var enemy_damage : float = 3
+@export var health : float
+@export var enemy_damage : float
 
 @onready var minotauro_state_machine = $MinotauroStateMachine as MinotauroStateMachine
 @onready var minotauro_idle_state = $MinotauroStateMachine/MinotauroIdleState as MinotauroIdleState
