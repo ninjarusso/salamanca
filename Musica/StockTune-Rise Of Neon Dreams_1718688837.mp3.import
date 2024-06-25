@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de7m5lnsxue8w"
+path="res://.godot/imported/StockTune-Rise Of Neon Dreams_1718688837.mp3-68c339bac9f68baadae6eec6a1d63ed9.mp3str"
+
+[deps]
+
+source_file="res://Musica/StockTune-Rise Of Neon Dreams_1718688837.mp3"
+dest_files=["res://.godot/imported/StockTune-Rise Of Neon Dreams_1718688837.mp3-68c339bac9f68baadae6eec6a1d63ed9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
