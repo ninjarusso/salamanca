@@ -1,6 +1,5 @@
-[gd_scene load_steps=68 format=3 uid="uid://drt6ek66rh3m1"]
+[gd_scene load_steps=69 format=3 uid="uid://drt6ek66rh3m1"]
 
-[ext_resource type="Texture2D" uid="uid://cr7u62wnovri8" path="res://assets/player/04 Roll B.png" id="1_dyl8n"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ee2jx"]
 [ext_resource type="Texture2D" uid="uid://dt7jwhd7ljyqu" path="res://assets/player/01 Idle B.png" id="1_mmthy"]
 [ext_resource type="Script" path="res://scripts/PlayerStateMachine.gd" id="5_dh832"]
@@ -9,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c577aggj6bia8" path="res://assets/player/Female Character Attack 03 copy.png" id="6_bq2rp"]
 [ext_resource type="Script" path="res://scripts/PlayerIdleState.gd" id="6_d2g12"]
 [ext_resource type="Script" path="res://scripts/PlayerAttackState.gd" id="7_7solb"]
+[ext_resource type="Texture2D" uid="uid://ds2364xm2gein" path="res://assets/player/Gaucho idle.png" id="7_smjsx"]
 [ext_resource type="Texture2D" uid="uid://brldohoqqvhnw" path="res://assets/player/02 Run gaucho png.png" id="8_4kkvr"]
+[ext_resource type="Texture2D" uid="uid://qki1xivlja7o" path="res://assets/player/04 Roll Gaucho copy.png" id="8_nqclp"]
 [ext_resource type="Script" path="res://scripts/PlayerMoveState.gd" id="8_y0dq8"]
 [ext_resource type="Script" path="res://scripts/PlayerRollState.gd" id="9_75iq2"]
 [ext_resource type="Texture2D" uid="uid://dqcjuue4mb3xi" path="res://assets/player/Gaucho Character Attack 01.png" id="9_tug3l"]
@@ -424,7 +425,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_mmthy")]
+"values": [ExtResource("7_smjsx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -488,7 +489,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_dyl8n")]
+"values": [ExtResource("8_nqclp")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
