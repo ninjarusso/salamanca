@@ -43,10 +43,11 @@ func _unhandled_input(event):
 		text_box.queue_free()
 			
 		current_line_index +=1
+		
 		if current_line_index >= dialog_lines.size():
 			is_dialog_active = false
 			current_line_index = 0
-			#dialog_finished.emit()
+			dialog_finished.emit()
 			return
 			
 		_show_text_box()

@@ -6,8 +6,8 @@ extends Sprite2D
 const lines : Array[String] = [
 	"Un esqueleto... ¿qué es esto?",
 	"Parece una carta...",
-	"Para Juan Moreira, Diez mil Pesos Fuertes...",
-	"Firma al pie: Don Sardetti",
+	"\"Para Juan Moreira, Diez mil Pesos Fuertes\"...",
+	"\"Firma al pie: Don Sardetti\"",
 ]
 
 func _ready():
@@ -15,4 +15,4 @@ func _ready():
 	
 func _on_interact():
 	DialogueManager.start_dialog(global_position, lines)
-	#await DialogueManager.dialog_finished
+	await DialogueManager.dialog_finished
