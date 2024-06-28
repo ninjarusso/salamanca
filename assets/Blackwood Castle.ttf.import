@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cyau114wa6qrv"
+path="res://.godot/imported/Blackwood Castle.ttf-49131a8056fe4e32e8868af44fa8aba9.fontdata"
+
+[deps]
+
+source_file="res://assets/Blackwood Castle.ttf"
+dest_files=["res://.godot/imported/Blackwood Castle.ttf-49131a8056fe4e32e8868af44fa8aba9.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

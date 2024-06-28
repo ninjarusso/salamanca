@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://414r2vm1obd6"]
+
+[ext_resource type="Texture2D" uid="uid://d2jfwvlk7da5l" path="res://assets/esqueleto.png" id="1_p6sv7"]
+[ext_resource type="Script" path="res://scripts/InteractionArea.gd" id="2_1qemt"]
+[ext_resource type="Script" path="res://scripts/Esqueleto.gd" id="2_ubcmq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qx1i"]
+radius = 115.109
+
+[node name="Esqueleto" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_p6sv7")
+script = ExtResource("2_ubcmq")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("2_1qemt")
+action_name = "inspeccionar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_0qx1i")
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

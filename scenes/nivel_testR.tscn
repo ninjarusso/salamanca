@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c12srgap5c7mh" path="res://assets/WhatsApp Image 2024-05-09 at 4.04.03 PM.jpeg" id="1_5rapa"]
 [ext_resource type="PackedScene" uid="uid://drt6ek66rh3m1" path="res://scenes/player.tscn" id="3_c5si0"]
-[ext_resource type="PackedScene" uid="uid://dfjsxfcg7563o" path="res://Final Boss/skeleton_boss.tscn" id="5_g6lch"]
+[ext_resource type="PackedScene" uid="uid://414r2vm1obd6" path="res://scenes/esqueleto.tscn" id="4_2bilu"]
 [ext_resource type="PackedScene" uid="uid://lri1kmql2xkq" path="res://scenes/pickup_vida.tscn" id="6_4utr1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75mmk"]
@@ -589,5 +589,5 @@ position = Vector2(281, 165)
 [node name="PickupVida" parent="." instance=ExtResource("6_4utr1")]
 position = Vector2(-381, 279)
 
-[node name="SkeletonBoss" parent="." instance=ExtResource("5_g6lch")]
-position = Vector2(650, 338)
+[node name="Esqueleto" parent="." instance=ExtResource("4_2bilu")]
+position = Vector2(508, 155)
