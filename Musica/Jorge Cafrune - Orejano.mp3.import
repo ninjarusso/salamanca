@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dawpi4b307las"
+path="res://.godot/imported/Jorge Cafrune - Orejano.mp3-054405bb0201d2c9fb129922a3ef0572.mp3str"
+
+[deps]
+
+source_file="res://Musica/Jorge Cafrune - Orejano.mp3"
+dest_files=["res://.godot/imported/Jorge Cafrune - Orejano.mp3-054405bb0201d2c9fb129922a3ef0572.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

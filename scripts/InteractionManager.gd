@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player : Player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player : Player = get_tree().get_first_node_in_group("Player")
 @onready var label = $Label
 
 const base_text : String = "[1]"
