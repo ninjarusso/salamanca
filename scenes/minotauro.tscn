@@ -680,7 +680,6 @@ script = ExtResource("11_1dkgr")
 position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_7v283")
 
-[connection signal="dead" from="." to="MinotauroStateMachine/MinotauroDeathState" method="_on_minotauro_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="MinotauroStateMachine/MinotauroHurtState" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="MinotauroStateMachine/MinotauroAttackState/BufferTimer" to="MinotauroStateMachine/MinotauroAttackState" method="_on_buffer_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="MinotauroStateMachine/MinotauroIdleState" method="_on_area_2d_body_entered"]
