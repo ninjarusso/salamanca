@@ -588,6 +588,7 @@ states/idle/position = Vector2(170, 57)
 states/walk/node = SubResource("AnimationNodeAnimation_sy7ec")
 states/walk/position = Vector2(170, 373)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5am4g"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_dc6p8"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_61vln"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_xhauu"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_yenjy"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_cayv1"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_osenh"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_mgeid"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_e1b3a"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_tf0em"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_52o1b"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_meqnc"), "hit", "walk", SubResource("AnimationNodeStateMachineTransition_54nc8"), "death", "End", SubResource("AnimationNodeStateMachineTransition_edjgg"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_nxu15")]
+graph_offset = Vector2(-173, 35)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_npog0"]
 radius = 200.01
