@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcdbhh8jmeijh"
-path="res://.godot/imported/04 Roll Gaucho copy.png-5093596a003c87d916fa5a79eec026a0.ctex"
+uid="uid://yd8ov40lca7p"
+path="res://.godot/imported/Capiango_Beta_Iddle.png-52bcb0992818ead3a5f6d32c37fec6eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/04 Roll Gaucho copy.png"
-dest_files=["res://.godot/imported/04 Roll Gaucho copy.png-5093596a003c87d916fa5a79eec026a0.ctex"]
+source_file="res://assets/capiango/Capiango_Beta_Iddle.png"
+dest_files=["res://.godot/imported/Capiango_Beta_Iddle.png-52bcb0992818ead3a5f6d32c37fec6eb.ctex"]
 
 [params]
 

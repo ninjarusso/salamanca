@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcdbhh8jmeijh"
-path="res://.godot/imported/04 Roll Gaucho copy.png-5093596a003c87d916fa5a79eec026a0.ctex"
+uid="uid://cqw3hnaxbgnjx"
+path="res://.godot/imported/Pomberito_Death.png-13323c85f416adf2f2a670d1bfc9c520.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/04 Roll Gaucho copy.png"
-dest_files=["res://.godot/imported/04 Roll Gaucho copy.png-5093596a003c87d916fa5a79eec026a0.ctex"]
+source_file="res://assets/pombero/Pomberito_Death.png"
+dest_files=["res://.godot/imported/Pomberito_Death.png-13323c85f416adf2f2a670d1bfc9c520.ctex"]
 
 [params]
 

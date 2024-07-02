@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcdbhh8jmeijh"
-path="res://.godot/imported/04 Roll Gaucho copy.png-5093596a003c87d916fa5a79eec026a0.ctex"
+uid="uid://cwi5hw3ms4c31"
+path="res://.godot/imported/almamula-spritesheet-sidewalk.png-7c8a8a0f7509222fa53dac0c0f6bc850.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/04 Roll Gaucho copy.png"
-dest_files=["res://.godot/imported/04 Roll Gaucho copy.png-5093596a003c87d916fa5a79eec026a0.ctex"]
+source_file="res://assets/almamula/almamula-spritesheet-sidewalk.png"
+dest_files=["res://.godot/imported/almamula-spritesheet-sidewalk.png-7c8a8a0f7509222fa53dac0c0f6bc850.ctex"]
 
 [params]
 

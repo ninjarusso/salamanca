@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dp3w4hlmfojwf"]
+[gd_scene load_steps=25 format=3 uid="uid://dp3w4hlmfojwf"]
 
 [ext_resource type="Texture2D" uid="uid://clgqgxmfciqqf" path="res://assets/Boar/Run/Run-Sheet-White.png" id="1_2pckw"]
 [ext_resource type="Texture2D" uid="uid://c0pvy0mj8fnuu" path="res://assets/Boar/Idle/Idle-Sheet-White.png" id="1_rx3hw"]
+[ext_resource type="Script" path="res://scripts/jabali.gd" id="1_w5lxn"]
 [ext_resource type="Texture2D" uid="uid://dfaqcl022q7ux" path="res://assets/Boar/Walk/Walk-Base-Sheet-White.png" id="2_vlrpk"]
 [ext_resource type="Script" path="res://scripts/BoarSateMachine.gd" id="4_kot3w"]
 [ext_resource type="Script" path="res://scripts/BoarIdleState.gd" id="5_8ssrw"]
@@ -141,6 +142,7 @@ animations = [{
 }]
 
 [node name="Jabali1" type="CharacterBody2D"]
+script = ExtResource("1_w5lxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -152,19 +154,19 @@ sprite_frames = SubResource("SpriteFrames_5ks05")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="BoarSateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animate2d")]
+[node name="BoarSateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animate2d", "starting_state")]
 script = ExtResource("4_kot3w")
 character = NodePath("..")
 current_state = NodePath("BoarIdleState")
 animate2d = NodePath("../AnimatedSprite2D")
+starting_state = NodePath("BoarIdleState")
 
-[node name="BoarIdleState" type="Node" parent="BoarSateMachine" node_paths=PackedStringArray("wander_timer", "ray")]
+[node name="BoarIdleState" type="Node" parent="BoarSateMachine"]
 script = ExtResource("5_8ssrw")
-wander_timer = NodePath("../../WanderTimer")
-ray = NodePath("../../RayCast2D")
+move_speed = 2.0
 
 [node name="WanderTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 3.0
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

@@ -4,6 +4,7 @@ extends Node
 @export var character : CharacterBody2D
 @export var current_state : BoarState
 @export var animate2d : AnimatedSprite2D
+@export var starting_state : BoarState
 
 var states : Array[BoarState]
 
@@ -16,6 +17,7 @@ func _ready():
 			child.connect("interrupt_state", on_state_interrupt_state)
 		else:
 			push_warning("Child " + child.name + " is not State for CharacterStateMachine")
+	switch_states(starting_state)
 			
 func _physics_process(delta):
 	if(current_state.next_state != null):
