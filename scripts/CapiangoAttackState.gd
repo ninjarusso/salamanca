@@ -12,12 +12,6 @@ func on_enter():
 	character.velocity = Vector2.ZERO
 	anim_tree["parameters/conditions/attack"] = true
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("Player"):
-		emit_signal("interrupt_state", self)
-		buffer_timer.start()
-		player = body
-
 func on_exit():
 	super()
 	anim_tree["parameters/conditions/attack"] = false
@@ -30,4 +24,16 @@ func _on_attack_range_body_exited(body):
 
 func attack():
 	if player != null:
-		player.take_damage(owner.enemy_damage)
+		player.take_damage(owner.enemy_damage)                      
+
+
+func _on_buffer_timer_timeout():
+	emit_signal("interrupt_state", self)
+
+
+func _on_attack_range_body_entered(body):
+	if body.is_in_group("Player"):
+		emit_signal("interrupt_state", self)
+		buffer_timer.start()
+		player = body
+
