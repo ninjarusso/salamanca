@@ -1,7 +1,7 @@
 extends Node
 
 var main_menu_screen = preload("res://scenes/main_menu.tscn")
-var level_1 = preload("res://Intento de nivel 1.tscn")
+var level_1 = preload("res://nivel_1.tscn")
 var pause_menu_screen = preload("res://scenes/pause_menu.tscn")
 
 func _ready():
