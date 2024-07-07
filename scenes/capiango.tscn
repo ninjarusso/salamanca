@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8mbbnn5ym0b" path="res://assets/Capiango/Capiango_Beta_Death-Sheet.png" id="4_gwr6n"]
 [ext_resource type="Texture2D" uid="uid://ci8fg1hfym3a8" path="res://assets/Capiango/Capiango_Beta_Atack.png" id="5_2ru7o"]
 [ext_resource type="Script" path="res://scripts/CapiangoIdleState.gd" id="7_36ep5"]
-[ext_resource type="Script" path="res://scripts/CapiangoState.gd" id="7_qfw5u"]
+[ext_resource type="Script" path="res://scripts/CapiangoStateMachine.gd" id="7_dwo5c"]
 [ext_resource type="Script" path="res://scripts/CapiangoHurtBox.gd" id="8_dgwg1"]
 [ext_resource type="Script" path="res://scripts/CapiangoChaseState.gd" id="9_yog1q"]
 [ext_resource type="Script" path="res://scripts/CapiangoHurtState.gd" id="10_8lqxn"]
@@ -359,7 +359,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
@@ -407,7 +407,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(1, 1)]
 }
 
@@ -501,9 +501,6 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b7slu"]
 animation = &"Attack_1"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8v85t"]
-animation = &"Attack_2"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1mpm6"]
 animation = &"Death"
 
@@ -521,57 +518,74 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88ewk"]
 advance_mode = 2
+advance_condition = &"is_moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l7y20"]
 advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m4tbr"]
-advance_mode = 2
+advance_condition = &"attack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cexk3"]
 advance_mode = 2
+advance_condition = &"attack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_guypa"]
 advance_mode = 2
+advance_condition = &"is_hit"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3g7yb"]
 advance_mode = 2
+advance_condition = &"is_dead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b6nnf"]
 switch_mode = 2
 advance_mode = 2
+advance_condition = &"stop"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_27px4"]
 switch_mode = 2
 advance_mode = 2
+advance_condition = &"idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gjfge"]
 switch_mode = 2
 advance_mode = 2
+advance_condition = &"is_moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vkvwc"]
 advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jv51"]
-advance_mode = 2
+advance_condition = &"idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whs6a"]
 advance_mode = 2
+advance_condition = &"is_dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6gwl"]
+advance_mode = 2
+advance_condition = &"is_hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k6pbn"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jyfp6"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vbf8h"]
 states/Attack_1/node = SubResource("AnimationNodeAnimation_b7slu")
-states/Attack_1/position = Vector2(519, 147)
-states/Attack_2/node = SubResource("AnimationNodeAnimation_8v85t")
-states/Attack_2/position = Vector2(532, 248)
+states/Attack_1/position = Vector2(463, 141)
 states/Death/node = SubResource("AnimationNodeAnimation_1mpm6")
-states/Death/position = Vector2(253, 248)
+states/Death/position = Vector2(511, 33)
 states/Hit/node = SubResource("AnimationNodeAnimation_2ntk8")
-states/Hit/position = Vector2(396, 248)
+states/Hit/position = Vector2(40, 141)
 states/Idle/node = SubResource("AnimationNodeAnimation_yccor")
-states/Idle/position = Vector2(294, 28)
+states/Idle/position = Vector2(145, 33)
+states/Start/position = Vector2(40, 33)
 states/Walk/node = SubResource("AnimationNodeAnimation_tlokw")
-states/Walk/position = Vector2(471, 33)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3j50j"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_88ewk"), "Walk", "Attack_1", SubResource("AnimationNodeStateMachineTransition_l7y20"), "Attack_1", "Attack_2", SubResource("AnimationNodeStateMachineTransition_m4tbr"), "Idle", "Attack_1", SubResource("AnimationNodeStateMachineTransition_cexk3"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_guypa"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_3g7yb"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_b6nnf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_27px4"), "Attack_1", "Walk", SubResource("AnimationNodeStateMachineTransition_gjfge"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_vkvwc"), "Attack_2", "Hit", SubResource("AnimationNodeStateMachineTransition_3jv51"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_whs6a")]
+states/Walk/position = Vector2(145, 248)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3j50j"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_88ewk"), "Walk", "Attack_1", SubResource("AnimationNodeStateMachineTransition_l7y20"), "Idle", "Attack_1", SubResource("AnimationNodeStateMachineTransition_cexk3"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_guypa"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_3g7yb"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_b6nnf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_27px4"), "Attack_1", "Walk", SubResource("AnimationNodeStateMachineTransition_gjfge"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_vkvwc"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_whs6a"), "Walk", "Hit", SubResource("AnimationNodeStateMachineTransition_w6gwl"), "Hit", "Walk", SubResource("AnimationNodeStateMachineTransition_k6pbn"), "Attack_1", "Idle", SubResource("AnimationNodeStateMachineTransition_jyfp6")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drsho"]
 radius = 200.01
@@ -585,8 +599,6 @@ height = 64.0
 
 [node name="Capiango" type="CharacterBody2D"]
 script = ExtResource("1_8yfwu")
-health = null
-enemy_damage = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l5l1e")
@@ -594,7 +606,6 @@ hframes = 6
 vframes = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(11, 0, 14, -6, 13, -12, 11, -17, 6, -20, 4, -24, 6, -29, 0, -30, -3, -28, -6, -31, -9, -29, -8, -24, -8, -19, -9, -15, -10, -11, -11, -4, -17, -2, -17, 6, -11, 6, -7, 3, -5, -2, -5, 2, -8, 6, -11, 11, -11, 17, -7, 23, -8, 26, -12, 26, -14, 31, -4, 31, 1, 27, -2, 16, 1, 8, 5, 15, 7, 23, 7, 31, 17, 31, 17, 27, 12, 22, 13, 11, 12, 6, 10, 5, 12, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -605,9 +616,18 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_vbf8h")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+parameters/conditions/idle = false
+parameters/conditions/is_dead = false
+parameters/conditions/is_hit = false
+parameters/conditions/is_moving = false
+parameters/conditions/stop = false
 
-[node name="CapiangoStateMachine" type="Node" parent="."]
-script = ExtResource("7_qfw5u")
+[node name="CapiangoStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "anim_tree")]
+script = ExtResource("7_dwo5c")
+character = NodePath("..")
+current_state = NodePath("CapiangoIdleState")
+anim_tree = NodePath("../AnimationTree")
 
 [node name="CapiangoIdleState" type="Node" parent="CapiangoStateMachine"]
 script = ExtResource("7_36ep5")
