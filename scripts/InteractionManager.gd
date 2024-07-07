@@ -3,7 +3,7 @@ extends Node2D
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 @onready var label = $Label
 
-const base_text : String = "[1]"
+const base_text : String = "[F]"
 
 var active_areas : Array = []
 var can_interact : bool = true

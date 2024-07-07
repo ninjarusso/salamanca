@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://b541jxsi8siku"]
+
+[ext_resource type="Texture2D" uid="uid://cnerfu2bit3w8" path="res://Cosas UI/SetMateLife/MatesinYerba.png" id="1_16w5i"]
+[ext_resource type="Texture2D" uid="uid://bdgxh5r2ophd5" path="res://Cosas UI/SetMateLife/Pava-sinAgua.png" id="2_4oqf2"]
+
+[sub_resource type="Theme" id="Theme_y8pdb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 355.0
+offset_top = 582.0
+offset_right = 469.0
+offset_bottom = 622.0
+theme = SubResource("Theme_y8pdb")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 61.0
+offset_right = 102.0
+offset_bottom = 40.0
+texture = ExtResource("1_16w5i")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel/TextureRect"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 42.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="vida" type="Label" parent="CanvasLayer/Panel/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 48.0
+offset_bottom = 32.0
+text = "Vida:"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer2"]
+offset_left = 679.0
+offset_top = 581.0
+offset_right = 798.0
+offset_bottom = 621.0
+theme = SubResource("Theme_y8pdb")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 76.0
+offset_right = 117.25
+offset_bottom = 40.0
+texture = ExtResource("2_4oqf2")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Panel/TextureRect"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 42.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/Panel/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="energía" type="Label" parent="CanvasLayer2/Panel/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 9.0
+offset_right = 68.0
+offset_bottom = 32.0
+text = "Energía:"

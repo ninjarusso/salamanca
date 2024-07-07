@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcpcrguvbcdbg"]
+
+[ext_resource type="Texture2D" uid="uid://d32xgrrgtrtyo" path="res://Cosas UI/SetMateLife/Cartel_png-removebg-preview.png" id="1_d1lvr"]
+[ext_resource type="Script" path="res://scripts/InteractionArea.gd" id="1_gisj5"]
+[ext_resource type="Script" path="res://scripts/cartel_controles.gd" id="2_081uv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj7ap"]
+radius = 593.408
+
+[sub_resource type="Theme" id="Theme_fed7t"]
+
+[node name="Cartel" type="Sprite2D"]
+texture = ExtResource("1_d1lvr")
+script = ExtResource("2_081uv")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("1_gisj5")
+action_name = "inspeccionar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_xj7ap")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = -146.0
+offset_top = -131.0
+offset_right = 122.0
+offset_bottom = -60.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fed7t")
+theme_override_font_sizes/font_size = 50
+text = "Presiona F"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_left = -101.0
+offset_top = -53.0
+offset_right = 152.0
+offset_bottom = 1.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_fed7t")
+theme_override_font_sizes/font_size = 30
+text = "Si quieres vivir..."
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
