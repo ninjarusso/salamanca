@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c12srgap5c7mh" path="res://assets/WhatsApp Image 2024-05-09 at 4.04.03 PM.jpeg" id="1_5rapa"]
 [ext_resource type="PackedScene" uid="uid://drt6ek66rh3m1" path="res://scenes/player.tscn" id="3_c5si0"]
-[ext_resource type="PackedScene" uid="uid://cooya7qepto88" path="res://scenes/pombero.tscn" id="4_s2xde"]
+[ext_resource type="PackedScene" uid="uid://bdlpvyk321ssy" path="res://scenes/capiango.tscn" id="4_uyxwb"]
 [ext_resource type="PackedScene" uid="uid://lri1kmql2xkq" path="res://scenes/pickup_vida.tscn" id="6_4utr1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75mmk"]
@@ -589,5 +589,5 @@ position = Vector2(281, 165)
 [node name="PickupVida" parent="." instance=ExtResource("6_4utr1")]
 position = Vector2(-97, 113)
 
-[node name="Node2D" parent="." instance=ExtResource("4_s2xde")]
-position = Vector2(163, 220)
+[node name="Capiango" parent="." instance=ExtResource("4_uyxwb")]
+position = Vector2(211, 282)

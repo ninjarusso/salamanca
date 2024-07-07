@@ -1,13 +1,13 @@
 class_name CapiangoChaseState
 extends CapiangoState
 
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 signal player_lost
 
 func on_enter():
 	super()
-	anim_tree["parameters/conditions/Idle"] = false
+	anim_tree["parameters/conditions/idle"] = false
 	anim_tree["parameters/conditions/is_moving"] = true
 	
 func state_process(delta) -> void:
