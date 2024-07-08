@@ -6,6 +6,6 @@ func on_enter():
 	character.velocity = Vector2.ZERO
 	anim_tree["parameters/conditions/is_dead"] = true
 
-func _on_minotauro_dead():
+func _on_capiango_dead():
 	emit_signal("interrupt_state", self)
 	character.is_dead = true

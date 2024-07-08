@@ -15,7 +15,7 @@ func on_exit():
 	anim_tree["parameters/conditions/is_hit"] = false
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == "hit":
+	if anim_name == "Hit":
 		next_state = chase_state
 
 func _on_hurt():

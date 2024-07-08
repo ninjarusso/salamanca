@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bdlpvyk321ssy"]
+[gd_scene load_steps=45 format=3 uid="uid://bdlpvyk321ssy"]
 
 [ext_resource type="Script" path="res://scripts/capiango.gd" id="1_8yfwu"]
 [ext_resource type="Texture2D" uid="uid://cl02pk0agdrce" path="res://assets/Capiango/Capiango_Beta_Iddle.png" id="1_l5l1e"]
@@ -573,6 +573,10 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cf06j"]
+advance_mode = 2
+advance_condition = &"is_hit"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vbf8h"]
 states/Attack_1/node = SubResource("AnimationNodeAnimation_b7slu")
 states/Attack_1/position = Vector2(463, 141)
@@ -585,13 +589,13 @@ states/Idle/position = Vector2(145, 33)
 states/Start/position = Vector2(40, 33)
 states/Walk/node = SubResource("AnimationNodeAnimation_tlokw")
 states/Walk/position = Vector2(145, 248)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3j50j"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_88ewk"), "Walk", "Attack_1", SubResource("AnimationNodeStateMachineTransition_l7y20"), "Idle", "Attack_1", SubResource("AnimationNodeStateMachineTransition_cexk3"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_guypa"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_3g7yb"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_b6nnf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_27px4"), "Attack_1", "Walk", SubResource("AnimationNodeStateMachineTransition_gjfge"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_vkvwc"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_whs6a"), "Walk", "Hit", SubResource("AnimationNodeStateMachineTransition_w6gwl"), "Hit", "Walk", SubResource("AnimationNodeStateMachineTransition_k6pbn"), "Attack_1", "Idle", SubResource("AnimationNodeStateMachineTransition_jyfp6")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3j50j"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_88ewk"), "Walk", "Attack_1", SubResource("AnimationNodeStateMachineTransition_l7y20"), "Idle", "Attack_1", SubResource("AnimationNodeStateMachineTransition_cexk3"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_guypa"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_3g7yb"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_b6nnf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_27px4"), "Attack_1", "Walk", SubResource("AnimationNodeStateMachineTransition_gjfge"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_vkvwc"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_whs6a"), "Walk", "Hit", SubResource("AnimationNodeStateMachineTransition_w6gwl"), "Hit", "Walk", SubResource("AnimationNodeStateMachineTransition_k6pbn"), "Attack_1", "Idle", SubResource("AnimationNodeStateMachineTransition_jyfp6"), "Attack_1", "Hit", SubResource("AnimationNodeStateMachineTransition_cf06j")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drsho"]
 radius = 200.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36q7g"]
-size = Vector2(65, 20)
+size = Vector2(65, 28)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5lan"]
 radius = 17.0
@@ -599,6 +603,8 @@ height = 64.0
 
 [node name="Capiango" type="CharacterBody2D"]
 script = ExtResource("1_8yfwu")
+health = 10.0
+enemy_damage = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l5l1e")
@@ -634,14 +640,17 @@ script = ExtResource("7_36ep5")
 
 [node name="CapiangoChaseState" type="Node" parent="CapiangoStateMachine"]
 script = ExtResource("9_yog1q")
+move_speed = 50.0
 
 [node name="CapiangoAttackState" type="Node" parent="CapiangoStateMachine"]
 script = ExtResource("10_o3owo")
 
 [node name="BufferTimer" type="Timer" parent="CapiangoStateMachine/CapiangoAttackState"]
+one_shot = true
 
-[node name="CapiangoHurtState" type="Node" parent="CapiangoStateMachine"]
+[node name="CapiangoHurtState" type="Node" parent="CapiangoStateMachine" node_paths=PackedStringArray("chase_state")]
 script = ExtResource("10_8lqxn")
+chase_state = NodePath("../CapiangoChaseState")
 
 [node name="CapiangoDeathState" type="Node" parent="CapiangoStateMachine"]
 script = ExtResource("11_jwc7p")
@@ -654,6 +663,7 @@ shape = SubResource("CircleShape2D_drsho")
 [node name="AttackRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_36q7g")
 
 [node name="CapiangoHurtBox" type="Area2D" parent="."]
@@ -662,6 +672,7 @@ script = ExtResource("8_dgwg1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CapiangoHurtBox"]
 shape = SubResource("CapsuleShape2D_q5lan")
 
+[connection signal="dead" from="." to="CapiangoStateMachine/CapiangoDeathState" method="_on_capiango_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="CapiangoStateMachine/CapiangoHurtState" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CapiangoStateMachine/CapiangoAttackState/BufferTimer" to="CapiangoStateMachine/CapiangoAttackState" method="_on_buffer_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="CapiangoStateMachine/CapiangoIdleState" method="_on_player_detection_body_entered"]
