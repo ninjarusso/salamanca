@@ -8,8 +8,7 @@ func on_enter():
 	character.velocity = Vector2.ZERO
 	anim_tree["parameters/conditions/idle"] = true
 	anim_tree["parameters/conditions/is_moving"] = false
-	
-	
-func _on_area_2d_body_entered(body):
+
+func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):
 		found_player.emit()

@@ -14,6 +14,6 @@ func state_process(delta) -> void:
 	character.direction = player.get_global_position() - character.get_global_position()
 	character.velocity = (character.direction.normalized() * move_speed * delta)
 
-func _on_area_2d_body_exited(body):
+func _on_player_detection_body_exited(body):
 	if body.is_in_group("Player"):
 		player_lost.emit()
