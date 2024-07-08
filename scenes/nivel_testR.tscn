@@ -588,10 +588,10 @@ layer_1/tile_data = PackedInt32Array()
 position = Vector2(281, 165)
 
 [node name="PickupVida" parent="." instance=ExtResource("6_4utr1")]
-position = Vector2(-97, 113)
+position = Vector2(697, 581)
 
 [node name="Capiango" parent="." instance=ExtResource("4_uyxwb")]
-position = Vector2(211, 282)
+position = Vector2(195, 411)
 
 [node name="Minotauro" parent="." instance=ExtResource("5_im88i")]
 position = Vector2(702, 136)

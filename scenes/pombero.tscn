@@ -1,10 +1,16 @@
-[gd_scene load_steps=31 format=3 uid="uid://cooya7qepto88"]
+[gd_scene load_steps=42 format=3 uid="uid://cooya7qepto88"]
 
 [ext_resource type="Texture2D" uid="uid://buswkqk6ihkww" path="res://assets/pombero/Pomberito_Iddle.png" id="1_bfq12"]
 [ext_resource type="Texture2D" uid="uid://cgg63bjn2tlp8" path="res://assets/pombero/Pomberito_Walk.png" id="2_vy70s"]
 [ext_resource type="Texture2D" uid="uid://ckln1568op8hv" path="res://assets/pombero/Pomberito_Attack.png" id="3_a5x5s"]
 [ext_resource type="Texture2D" uid="uid://d2xy6jqu0rha2" path="res://assets/pombero/Pomberito_Hit.png" id="4_0kb4b"]
 [ext_resource type="Texture2D" uid="uid://cqw3hnaxbgnjx" path="res://assets/pombero/Pomberito_Death.png" id="5_vcd4x"]
+[ext_resource type="Script" path="res://scripts/PomberoStateMachine.gd" id="6_quy1x"]
+[ext_resource type="Script" path="res://scripts/PomberoIdleState.gd" id="7_huccy"]
+[ext_resource type="Script" path="res://scripts/PomberoChaseState.gd" id="8_56omh"]
+[ext_resource type="Script" path="res://scripts/PomberoAttackState.gd" id="9_gsbpe"]
+[ext_resource type="Script" path="res://scripts/PomberoHurtState.gd" id="10_4qkk8"]
+[ext_resource type="Script" path="res://scripts/PomberoDeadState.gd" id="11_qqrhr"]
 
 [sub_resource type="Animation" id="Animation_k51uv"]
 length = 0.001
@@ -540,10 +546,30 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"is_moving"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nn2de"]
+advance_mode = 2
+advance_condition = &"is_hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3il74"]
+advance_mode = 2
+advance_condition = &"is_dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mb1pj"]
+advance_mode = 2
+advance_condition = &"is_dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1y33q"]
+advance_mode = 2
+advance_condition = &"is_dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_biekm"]
+advance_mode = 2
+advance_condition = &"is_dead"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k2773"]
 states/Start/position = Vector2(38, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_bfurv")
-states/attack/position = Vector2(245, 102)
+states/attack/position = Vector2(314, 95)
 states/death/node = SubResource("AnimationNodeAnimation_k8ryp")
 states/death/position = Vector2(381, 232)
 states/hit/node = SubResource("AnimationNodeAnimation_ljpfo")
@@ -552,7 +578,7 @@ states/idle/node = SubResource("AnimationNodeAnimation_ch6ts")
 states/idle/position = Vector2(133, 100)
 states/walk/node = SubResource("AnimationNodeAnimation_6vbvm")
 states/walk/position = Vector2(133, 363)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g8asl"), "death", "End", SubResource("AnimationNodeStateMachineTransition_a6c8k"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_185w4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_1rdt3"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_saqm6"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_oixbj"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_i73yw"), "hit", "walk", SubResource("AnimationNodeStateMachineTransition_7wopu"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_lhs73"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_gf4sy"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_0ng4i"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_wgcvo")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g8asl"), "death", "End", SubResource("AnimationNodeStateMachineTransition_a6c8k"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_185w4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_1rdt3"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_saqm6"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_oixbj"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_i73yw"), "hit", "walk", SubResource("AnimationNodeStateMachineTransition_7wopu"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_lhs73"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_gf4sy"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_0ng4i"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_wgcvo"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_nn2de"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3il74"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_mb1pj"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_1y33q"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_biekm")]
 
 [node name="Pombero" type="CharacterBody2D"]
 
@@ -570,9 +596,34 @@ tree_root = SubResource("AnimationNodeStateMachine_k2773")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false
 parameters/conditions/idle = false
+parameters/conditions/is_dead = false
 parameters/conditions/is_hit = false
 parameters/conditions/is_moving = false
 parameters/conditions/stop = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-7, 30, -20, 1, -15, -11, 0, -16, 18, 0, 23, 29, 22, 31, -6, 31)
+
+[node name="PomberoStateMachine" type="Node" parent="."]
+script = ExtResource("6_quy1x")
+
+[node name="PomberoIdleState" type="Node" parent="PomberoStateMachine"]
+script = ExtResource("7_huccy")
+
+[node name="PomberoChaseState" type="Node" parent="PomberoStateMachine"]
+script = ExtResource("8_56omh")
+
+[node name="PomberoAttackState" type="Node" parent="PomberoStateMachine"]
+script = ExtResource("9_gsbpe")
+
+[node name="BufferTimer" type="Timer" parent="PomberoStateMachine/PomberoAttackState"]
+one_shot = true
+
+[node name="PomberoHurtState" type="Node" parent="PomberoStateMachine" node_paths=PackedStringArray("chase_state")]
+script = ExtResource("10_4qkk8")
+chase_state = NodePath("../PomberoChaseState")
+
+[node name="PomberoDeadState" type="Node" parent="PomberoStateMachine"]
+script = ExtResource("11_qqrhr")
+
+[connection signal="timeout" from="PomberoStateMachine/PomberoAttackState/BufferTimer" to="PomberoStateMachine/PomberoAttackState" method="_on_buffer_timer_timeout"]
