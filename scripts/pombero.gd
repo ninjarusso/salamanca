@@ -25,8 +25,8 @@ func _physics_process(delta):
 		if pombero_state_machine.current_state == pombero_chase_state:
 			direction = player.position - position
 			velocity = direction.normalized() * move_speed
-		#else:
-			#velocity = Vector2.ZERO
+		else:
+			velocity = Vector2.ZERO
 		
 		update_facing_direction()
 		move_and_slide()
