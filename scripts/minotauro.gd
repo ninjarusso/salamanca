@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var health : float
 @export var enemy_damage : float
+@onready var minotauro_sfx = $Minotauro_sfx
 
 @onready var minotauro_state_machine = $MinotauroStateMachine as MinotauroStateMachine
 @onready var minotauro_idle_state = $MinotauroStateMachine/MinotauroIdleState as MinotauroIdleState
@@ -43,6 +44,7 @@ func _ready():
 func _on_found_player():
 	if !is_dead:
 		minotauro_state_machine.switch_state(minotauro_chase_state)
+		minotauro_sfx.play()
 	
 func _on_player_lost():
 	if !is_dead:

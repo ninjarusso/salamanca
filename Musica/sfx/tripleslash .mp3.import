@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://diaxtwjl4378j"
+path="res://.godot/imported/tripleslash .mp3-328933d71bd4923e92baba25a9fa5ac5.mp3str"
+
+[deps]
+
+source_file="res://Musica/sfx/tripleslash .mp3"
+dest_files=["res://.godot/imported/tripleslash .mp3-328933d71bd4923e92baba25a9fa5ac5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

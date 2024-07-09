@@ -13,12 +13,15 @@ signal hurt
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = $PlayerStateMachine
 @onready var sprite_2d = $Sprite2D
+@onready var sorbo_mate = $SorboMate
+@onready var vida_bar = $Control/CanvasLayer/Panel/TextureRect/MarginContainer/VBoxContainer/VidaBar
 
 var move_speed : float
 var is_dead : bool = false
 
 func _ready():
 	state_machine.init(self)
+	vida_bar.init_vida(health)
 
 func _physics_process(delta):
 	state_machine.process_physics(delta)
@@ -41,14 +44,20 @@ func update_facing_direction() -> void:
 func take_damage(damage : float) -> void:
 	health -= damage
 	if health <= 0:
+		vida_bar.vida = 0
 		emit_signal("dead")
 		is_dead = true
 	else:
 		print(self.name + " has taken " + str(damage) + " damage, " + str(health) + " hp remaining")
 		emit_signal("hurt")
+		vida_bar.vida = health
 
 func recover_health(amount: float):
+	sorbo_mate.play()
 	health += amount
 	if health < 5:
 		health = 5
 	print("Health recovered: ", health)
+	
+
+	

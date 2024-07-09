@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bdlpvyk321ssy"]
+[gd_scene load_steps=46 format=3 uid="uid://bdlpvyk321ssy"]
 
 [ext_resource type="Script" path="res://scripts/capiango.gd" id="1_8yfwu"]
 [ext_resource type="Texture2D" uid="uid://cl02pk0agdrce" path="res://assets/Capiango/Capiango_Beta_Iddle.png" id="1_l5l1e"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/CapiangoHurtState.gd" id="10_8lqxn"]
 [ext_resource type="Script" path="res://scripts/CapiangoAttackState.gd" id="10_o3owo"]
 [ext_resource type="Script" path="res://scripts/CapiangoDeathState.gd" id="11_jwc7p"]
+[ext_resource type="AudioStream" uid="uid://dw17vm86q80fj" path="res://Musica/sfx/Capiangosfx.mp3" id="14_7ishg"]
 
 [sub_resource type="Animation" id="Animation_jq7h7"]
 resource_name = "Attack_1"
@@ -671,6 +672,9 @@ script = ExtResource("8_dgwg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CapiangoHurtBox"]
 shape = SubResource("CapsuleShape2D_q5lan")
+
+[node name="Capiangosfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_7ishg")
 
 [connection signal="dead" from="." to="CapiangoStateMachine/CapiangoDeathState" method="_on_capiango_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="CapiangoStateMachine/CapiangoHurtState" method="_on_animation_tree_animation_finished"]

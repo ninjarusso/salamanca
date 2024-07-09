@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://drt6ek66rh3m1"]
+[gd_scene load_steps=71 format=3 uid="uid://drt6ek66rh3m1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ee2jx"]
 [ext_resource type="Texture2D" uid="uid://dt7jwhd7ljyqu" path="res://assets/player/01 Idle B.png" id="1_mmthy"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://scripts/PlayerHitBox.gd" id="16_3h6po"]
 [ext_resource type="Script" path="res://scripts/PlayerDeathState.gd" id="16_68qot"]
 [ext_resource type="Script" path="res://scripts/PlayerHitBoxCollisionPolygon2D.gd" id="18_sbvf8"]
+[ext_resource type="AudioStream" uid="uid://dw8dq2x7g56a0" path="res://Musica/sfx/SorboMateSfx (corto).mp3" id="20_rli3p"]
+[ext_resource type="PackedScene" uid="uid://b541jxsi8siku" path="res://ui_intento1.tscn" id="21_xxuvq"]
 [ext_resource type="Script" path="res://scripts/PlayerHurtBox.gd" id="22_k0gmn"]
 
 [sub_resource type="Animation" id="Animation_sadml"]
@@ -790,6 +792,7 @@ states/roll/position = Vector2(394, 338)
 states/run/node = SubResource("AnimationNodeBlendSpace2D_c1f56")
 states/run/position = Vector2(259, 338)
 transitions = ["run", "roll", SubResource("AnimationNodeStateMachineTransition_85h5j"), "roll", "run", SubResource("AnimationNodeStateMachineTransition_sx80x"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_jcbcs"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_nhtrq"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_t2plc"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_x6p85"), "roll", "idle", SubResource("AnimationNodeStateMachineTransition_sb0kr"), "attack2", "run", SubResource("AnimationNodeStateMachineTransition_lu10h"), "attack2", "attack3", SubResource("AnimationNodeStateMachineTransition_symvp"), "attack3", "run", SubResource("AnimationNodeStateMachineTransition_7lgne"), "attack3", "idle", SubResource("AnimationNodeStateMachineTransition_0lih3"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_1inmb"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_rugrp"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_f73m0"), "attack1", "run", SubResource("AnimationNodeStateMachineTransition_wa7y4"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_y22js"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3lp37"), "run", "death", SubResource("AnimationNodeStateMachineTransition_tpr6w")]
+graph_offset = Vector2(0, -226.439)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhqdf"]
 height = 38.0
@@ -904,6 +907,12 @@ script = ExtResource("22_k0gmn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_vbwn7")
+
+[node name="SorboMate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_rli3p")
+volume_db = 8.433
+
+[node name="Control" parent="." instance=ExtResource("21_xxuvq")]
 
 [connection signal="dead" from="." to="PlayerStateMachine/PlayerDeathState" method="_on_player_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="PlayerStateMachine/PlayerAttackState" method="_on_animation_tree_animation_finished"]

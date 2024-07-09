@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var capiango_hurt_state = $CapiangoStateMachine/CapiangoHurtState as CapiangoHurtState
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var capiangosfx = $Capiangosfx
 
 var direction : Vector2 = Vector2.ZERO
 var is_dead : bool = false
@@ -42,6 +43,7 @@ func _ready():
 func _on_found_player():
 	if !is_dead:
 		capiango_state_machine.switch_state(capiango_chase_state)
+		capiangosfx.play()
 	
 func _on_player_lost():
 	if !is_dead:

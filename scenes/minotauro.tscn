@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://y7orxch5h48q"]
+[gd_scene load_steps=46 format=3 uid="uid://y7orxch5h48q"]
 
 [ext_resource type="Script" path="res://scripts/minotauro.gd" id="1_pvmtl"]
 [ext_resource type="Texture2D" uid="uid://0s220e0r2i5v" path="res://assets/minotauro/MinotauroIddle.png" id="1_rg08q"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/EnemyHurtBox.gd" id="11_1dkgr"]
 [ext_resource type="Script" path="res://scripts/MinotauroHurtState.gd" id="11_32ucp"]
 [ext_resource type="Script" path="res://scripts/MinotauroDeathState.gd" id="12_sa7gd"]
+[ext_resource type="AudioStream" uid="uid://70kykdq4b1dd" path="res://Musica/sfx/Minotaurosfx.mp3" id="14_l2i12"]
 
 [sub_resource type="Animation" id="Animation_t6yvt"]
 length = 0.001
@@ -681,6 +682,11 @@ script = ExtResource("11_1dkgr")
 position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_7v283")
 
+[node name="Minotauro_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_l2i12")
+volume_db = -16.0
+
+[connection signal="dead" from="." to="MinotauroStateMachine/MinotauroDeathState" method="_on_minotauro_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="MinotauroStateMachine/MinotauroHurtState" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="MinotauroStateMachine/MinotauroAttackState/BufferTimer" to="MinotauroStateMachine/MinotauroAttackState" method="_on_buffer_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="MinotauroStateMachine/MinotauroIdleState" method="_on_area_2d_body_entered"]
