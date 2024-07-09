@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://cooya7qepto88"]
+[gd_scene load_steps=47 format=3 uid="uid://cooya7qepto88"]
 
 [ext_resource type="Texture2D" uid="uid://buswkqk6ihkww" path="res://assets/pombero/Pomberito_Iddle.png" id="1_bfq12"]
+[ext_resource type="Script" path="res://scripts/pombero.gd" id="1_xmyqa"]
 [ext_resource type="Texture2D" uid="uid://cgg63bjn2tlp8" path="res://assets/pombero/Pomberito_Walk.png" id="2_vy70s"]
 [ext_resource type="Texture2D" uid="uid://ckln1568op8hv" path="res://assets/pombero/Pomberito_Attack.png" id="3_a5x5s"]
 [ext_resource type="Texture2D" uid="uid://d2xy6jqu0rha2" path="res://assets/pombero/Pomberito_Hit.png" id="4_0kb4b"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/PomberoAttackState.gd" id="9_gsbpe"]
 [ext_resource type="Script" path="res://scripts/PomberoHurtState.gd" id="10_4qkk8"]
 [ext_resource type="Script" path="res://scripts/PomberoDeadState.gd" id="11_qqrhr"]
+[ext_resource type="Script" path="res://scripts/EnemyHurtBox.gd" id="13_tqduh"]
 
 [sub_resource type="Animation" id="Animation_k51uv"]
 length = 0.001
@@ -161,6 +163,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PomberoStateMachine/PomberoAttackState")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jr18x"]
@@ -580,7 +596,20 @@ states/walk/node = SubResource("AnimationNodeAnimation_6vbvm")
 states/walk/position = Vector2(133, 363)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g8asl"), "death", "End", SubResource("AnimationNodeStateMachineTransition_a6c8k"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_185w4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_1rdt3"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_saqm6"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_oixbj"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_i73yw"), "hit", "walk", SubResource("AnimationNodeStateMachineTransition_7wopu"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_lhs73"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_gf4sy"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_0ng4i"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_wgcvo"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_nn2de"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3il74"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_mb1pj"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_1y33q"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_biekm")]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb5y6"]
+radius = 20.0
+height = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxc1k"]
+size = Vector2(48, 17.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3anm1"]
+radius = 111.221
+
 [node name="Pombero" type="CharacterBody2D"]
+script = ExtResource("1_xmyqa")
+health = 10.0
+enemy_damage = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bfq12")
@@ -604,14 +633,18 @@ parameters/conditions/stop = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-7, 30, -20, 1, -15, -11, 0, -16, 18, 0, 23, 29, 22, 31, -6, 31)
 
-[node name="PomberoStateMachine" type="Node" parent="."]
+[node name="PomberoStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "anim_tree")]
 script = ExtResource("6_quy1x")
+character = NodePath("..")
+current_state = NodePath("PomberoIdleState")
+anim_tree = NodePath("../AnimationTree")
 
 [node name="PomberoIdleState" type="Node" parent="PomberoStateMachine"]
 script = ExtResource("7_huccy")
 
 [node name="PomberoChaseState" type="Node" parent="PomberoStateMachine"]
 script = ExtResource("8_56omh")
+move_speed = 50.0
 
 [node name="PomberoAttackState" type="Node" parent="PomberoStateMachine"]
 script = ExtResource("9_gsbpe")
@@ -626,4 +659,32 @@ chase_state = NodePath("../PomberoChaseState")
 [node name="PomberoDeadState" type="Node" parent="PomberoStateMachine"]
 script = ExtResource("11_qqrhr")
 
+[node name="EnemyHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("13_tqduh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox"]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_sb5y6")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(0, 3.25)
+shape = SubResource("RectangleShape2D_cxc1k")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_3anm1")
+
+[connection signal="dead" from="." to="PomberoStateMachine/PomberoDeadState" method="_on_pombero_dead"]
+[connection signal="animation_finished" from="AnimationTree" to="PomberoStateMachine/PomberoHurtState" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="PomberoStateMachine/PomberoAttackState/BufferTimer" to="PomberoStateMachine/PomberoAttackState" method="_on_buffer_timer_timeout"]
+[connection signal="body_entered" from="AttackRange" to="PomberoStateMachine/PomberoAttackState" method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="PomberoStateMachine/PomberoAttackState" method="_on_attack_range_body_exited"]
+[connection signal="body_entered" from="PlayerDetection" to="PomberoStateMachine/PomberoIdleState" method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="PomberoStateMachine/PomberoChaseState" method="_on_player_detection_body_exited"]
