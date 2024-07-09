@@ -863,15 +863,15 @@ one_shot = true
 
 [node name="PlayerMoveState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("idle_state", "attack_state", "roll_state")]
 script = ExtResource("8_y0dq8")
+move_speed = 220.0
 idle_state = NodePath("../PlayerIdleState")
 attack_state = NodePath("../PlayerAttackState")
 roll_state = NodePath("../PlayerRollState")
-move_speed = 220.0
 
 [node name="PlayerRollState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("9_75iq2")
-idle_state = NodePath("../PlayerIdleState")
 move_speed = 550.0
+idle_state = NodePath("../PlayerIdleState")
 
 [node name="PlayerDeathState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("16_68qot")
