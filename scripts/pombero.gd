@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var pomberosfx = $Pomberosfx
 
 var direction : Vector2 = Vector2.ZERO
 var is_dead : bool = false
@@ -46,6 +47,7 @@ func _ready():
 func _on_found_player():
 	if !is_dead:
 		pombero_state_machine.switch_state(pombero_chase_state)
+		pomberosfx.play()
 	
 func _on_player_lost():
 	if !is_dead:

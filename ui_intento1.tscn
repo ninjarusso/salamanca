@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b541jxsi8siku"]
+[gd_scene load_steps=6 format=3 uid="uid://b541jxsi8siku"]
 
 [ext_resource type="Texture2D" uid="uid://cnerfu2bit3w8" path="res://Cosas UI/SetMateLife/MatesinYerba.png" id="1_16w5i"]
-[ext_resource type="Texture2D" uid="uid://bdgxh5r2ophd5" path="res://Cosas UI/SetMateLife/Pava-sinAgua.png" id="2_4oqf2"]
 [ext_resource type="Script" path="res://VidaBar.gd" id="2_xdcqf"]
-[ext_resource type="Script" path="res://StaminaBar.gd" id="4_hnxia"]
 
 [sub_resource type="Theme" id="Theme_y8pdb"]
 
@@ -11,12 +9,6 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5joc"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpfi1"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kiqn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Control" type="Control"]
@@ -30,10 +22,10 @@ grow_vertical = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 355.0
-offset_top = 582.0
-offset_right = 468.0
-offset_bottom = 630.0
+offset_left = 505.0
+offset_top = 579.0
+offset_right = 618.0
+offset_bottom = 626.0
 theme = SubResource("Theme_y8pdb")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
@@ -71,50 +63,5 @@ offset_top = 9.0
 offset_right = 48.0
 offset_bottom = 32.0
 text = "Vida:"
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer2"]
-offset_left = 679.0
-offset_top = 581.0
-offset_right = 807.0
-offset_bottom = 630.0
-theme = SubResource("Theme_y8pdb")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/Panel"]
-layout_mode = 0
-offset_left = 76.0
-offset_right = 117.25
-offset_bottom = 40.0
-texture = ExtResource("2_4oqf2")
-expand_mode = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Panel/TextureRect"]
-layout_mode = 0
-offset_top = 17.0
-offset_right = 42.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/Panel/TextureRect/MarginContainer"]
-layout_mode = 2
-
-[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer2/Panel/TextureRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_dpfi1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_2kiqn")
-value = 100.0
-script = ExtResource("4_hnxia")
-
-[node name="Timer" type="Timer" parent="CanvasLayer2/Panel/TextureRect/MarginContainer/VBoxContainer/StaminaBar"]
-wait_time = 0.4
-one_shot = true
-
-[node name="Label" type="Label" parent="CanvasLayer2/Panel"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 9.0
-offset_right = 68.0
-offset_bottom = 32.0
-text = "Energía:"
 
 [connection signal="timeout" from="CanvasLayer/Panel/TextureRect/MarginContainer/VBoxContainer/VidaBar/Timer" to="CanvasLayer/Panel/TextureRect/MarginContainer/VBoxContainer/VidaBar" method="_on_timer_timeout"]

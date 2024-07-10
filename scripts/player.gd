@@ -8,6 +8,7 @@ signal hurt
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage_multiplier : float
 @export var health : float
+@export var stamina : float
 @export var player_damage : float
 
 @onready var anim_tree = $AnimationTree
@@ -15,6 +16,7 @@ signal hurt
 @onready var sprite_2d = $Sprite2D
 @onready var sorbo_mate = $SorboMate
 @onready var vida_bar = $Control/CanvasLayer/Panel/TextureRect/MarginContainer/VBoxContainer/VidaBar
+@onready var stamina_bar =$Control/CanvasLayer2/Panel/TextureRect/MarginContainer/VBoxContainer/StaminaBar
 
 var move_speed : float
 var is_dead : bool = false
@@ -58,6 +60,4 @@ func recover_health(amount: float):
 	if health < 5:
 		health = 5
 	print("Health recovered: ", health)
-	
-
-	
+	vida_bar.vida = health

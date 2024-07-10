@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cooya7qepto88"]
+[gd_scene load_steps=48 format=3 uid="uid://cooya7qepto88"]
 
 [ext_resource type="Texture2D" uid="uid://buswkqk6ihkww" path="res://assets/pombero/Pomberito_Iddle.png" id="1_bfq12"]
 [ext_resource type="Script" path="res://scripts/pombero.gd" id="1_xmyqa"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/PomberoHurtState.gd" id="10_4qkk8"]
 [ext_resource type="Script" path="res://scripts/PomberoDeadState.gd" id="11_qqrhr"]
 [ext_resource type="Script" path="res://scripts/EnemyHurtBox.gd" id="13_tqduh"]
+[ext_resource type="AudioStream" uid="uid://dn68ajjpcg5qn" path="res://Musica/sfx/Pomberosfx.mp3" id="14_1hdo8"]
 
 [sub_resource type="Animation" id="Animation_k51uv"]
 length = 0.001
@@ -680,6 +681,9 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_3anm1")
+
+[node name="Pomberosfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_1hdo8")
 
 [connection signal="dead" from="." to="PomberoStateMachine/PomberoDeadState" method="_on_pombero_dead"]
 [connection signal="animation_finished" from="AnimationTree" to="PomberoStateMachine/PomberoHurtState" method="_on_animation_tree_animation_finished"]
