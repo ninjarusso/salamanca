@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3okj053i7672"]
+[gd_scene load_steps=9 format=3 uid="uid://b3okj053i7672"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_r2xew"]
 
@@ -30,19 +30,19 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nupe0"]
+
 [sub_resource type="Theme" id="Theme_2m8uv"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/fonts/font = null
 Button/styles/disabled = SubResource("StyleBoxFlat_0nfn5")
 Button/styles/focus = SubResource("StyleBoxFlat_px71y")
 Button/styles/hover = SubResource("StyleBoxFlat_6t16g")
 Button/styles/normal = SubResource("StyleBoxFlat_b1kov")
 Button/styles/pressed = SubResource("StyleBoxFlat_px71y")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_nupe0")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij2ym"]
-bg_color = Color(0.465425, 0.471333, 0.473863, 1)
-border_width_left = 15
-border_width_top = 10
-border_width_right = 15
-border_width_bottom = 10
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxn28"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -65,7 +65,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_2m8uv")
-theme_override_styles/panel = SubResource("StyleBoxFlat_ij2ym")
+theme_override_styles/panel = SubResource("StyleBoxTexture_bxn28")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
