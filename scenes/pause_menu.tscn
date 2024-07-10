@@ -1,8 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3okj053i7672"]
+[gd_scene load_steps=9 format=3 uid="uid://b3okj053i7672"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_r2xew"]
-[ext_resource type="FontFile" uid="uid://cyau114wa6qrv" path="res://assets/Blackwood Castle.ttf" id="2_8h4io"]
-[ext_resource type="Texture2D" uid="uid://dnaed2trfggav" path="res://assets/Menu Pausa editado.png" id="3_twtq7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfn5"]
 bg_color = Color(0, 0.630867, 0.97535, 1)
@@ -36,7 +34,7 @@ border_width_bottom = 1
 
 [sub_resource type="Theme" id="Theme_2m8uv"]
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/fonts/font = ExtResource("2_8h4io")
+Button/fonts/font = null
 Button/styles/disabled = SubResource("StyleBoxFlat_0nfn5")
 Button/styles/focus = SubResource("StyleBoxFlat_px71y")
 Button/styles/hover = SubResource("StyleBoxFlat_6t16g")
@@ -45,7 +43,6 @@ Button/styles/pressed = SubResource("StyleBoxFlat_px71y")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_nupe0")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxn28"]
-texture = ExtResource("3_twtq7")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
