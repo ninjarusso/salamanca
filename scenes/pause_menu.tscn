@@ -1,48 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3okj053i7672"]
+[gd_scene load_steps=7 format=3 uid="uid://b3okj053i7672"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_r2xew"]
+[ext_resource type="FontFile" uid="uid://cyau114wa6qrv" path="res://assets/Blackwood Castle.ttf" id="2_46f25"]
+[ext_resource type="Texture2D" uid="uid://dnaed2trfggav" path="res://assets/Menu Pausa editado.png" id="3_pyvdr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfn5"]
-bg_color = Color(0, 0.630867, 0.97535, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px71y"]
-bg_color = Color(0, 0.535878, 0.832652, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t16g"]
-bg_color = Color(0.331211, 0.712271, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1kov"]
-bg_color = Color(0, 0.630867, 0.97535, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nupe0"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uywgq"]
+texture = ExtResource("3_pyvdr")
 
 [sub_resource type="Theme" id="Theme_2m8uv"]
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/fonts/font = null
-Button/styles/disabled = SubResource("StyleBoxFlat_0nfn5")
-Button/styles/focus = SubResource("StyleBoxFlat_px71y")
-Button/styles/hover = SubResource("StyleBoxFlat_6t16g")
-Button/styles/normal = SubResource("StyleBoxFlat_b1kov")
-Button/styles/pressed = SubResource("StyleBoxFlat_px71y")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_nupe0")
+Button/fonts/font = ExtResource("2_46f25")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_uywgq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxn28"]
+texture = ExtResource("3_pyvdr")
+expand_margin_left = 15.0
+expand_margin_top = 10.0
+expand_margin_right = 15.0
+expand_margin_bottom = 10.0
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
