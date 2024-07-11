@@ -40,39 +40,16 @@ process_mode = 3
 layer = 2
 script = ExtResource("1_0rfpv")
 
-[node name="TitleBackground" type="Sprite2D" parent="."]
-position = Vector2(577, 325.5)
-scale = Vector2(1.154, 1.23619)
-texture = ExtResource("2_c2gua")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 491.0
 offset_top = 236.0
 offset_right = 661.0
 offset_bottom = 410.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource("Theme_2m8uv")
-theme_override_styles/panel = SubResource("StyleBoxTexture_o8sqp")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-icon = ExtResource("2_tqd5c")
-icon_alignment = 1
-
-[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_r421v")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TitleBackground" type="Sprite2D" parent="."]
+position = Vector2(577, 325.5)
+scale = Vector2(1.154, 1.23619)
+texture = ExtResource("2_c2gua")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
@@ -83,10 +60,32 @@ offset_bottom = 0.295959
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_2m8uv")
+theme_override_styles/panel = SubResource("StyleBoxTexture_o8sqp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_tqd5c")
+icon_alignment = 1
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_r421v")
+
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(578, 108.5)
 scale = Vector2(0.532432, 0.544271)
 texture = ExtResource("4_cm2oj")
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
