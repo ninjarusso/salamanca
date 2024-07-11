@@ -1,7 +1,7 @@
 class_name MinotauroChaseState
 extends MinotauroState
 
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 signal player_lost
 

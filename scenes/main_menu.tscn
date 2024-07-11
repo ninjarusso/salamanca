@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8weiis7sfq7u"]
+[gd_scene load_steps=14 format=3 uid="uid://b8weiis7sfq7u"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0rfpv"]
-[ext_resource type="Texture2D" uid="uid://by2xgq57bilj0" path="res://assets/fondo_titlescreen.png" id="2_c2gua"]
+[ext_resource type="Texture2D" uid="uid://by2xgq57bilj0" path="res://assets/fondo_titlescreen.png" id="2_1uh2k"]
 [ext_resource type="Texture2D" uid="uid://06s188hvdfy5" path="res://assets/play_button.png" id="2_tqd5c"]
 [ext_resource type="Texture2D" uid="uid://4amflqlb3ldg" path="res://assets/quit_button.png" id="3_r421v"]
 [ext_resource type="Texture2D" uid="uid://dbe2uylhb6y6b" path="res://assets/La Salamanca_Logo.png" id="4_cm2oj"]
+[ext_resource type="AudioStream" uid="uid://dawpi4b307las" path="res://Musica/Jorge Cafrune - Orejano.mp3" id="5_yfore"]
+[ext_resource type="Texture2D" uid="uid://bdkhgnw3wds6e" path="res://assets/credits_button.png" id="7_5d4pb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfn5"]
 bg_color = Color(0, 0.630867, 0.97535, 1)
@@ -49,7 +51,7 @@ offset_bottom = 410.0
 [node name="TitleBackground" type="Sprite2D" parent="."]
 position = Vector2(577, 325.5)
 scale = Vector2(1.154, 1.23619)
-texture = ExtResource("2_c2gua")
+texture = ExtResource("2_1uh2k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
@@ -87,5 +89,19 @@ position = Vector2(578, 108.5)
 scale = Vector2(0.532432, 0.544271)
 texture = ExtResource("4_cm2oj")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yfore")
+volume_db = -30.0
+autoplay = true
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 936.0
+offset_top = 570.0
+offset_right = 1621.0
+offset_bottom = 917.0
+scale = Vector2(0.164023, 0.158675)
+icon = ExtResource("7_5d4pb")
+
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

@@ -602,7 +602,7 @@ size = Vector2(65, 28)
 radius = 17.0
 height = 64.0
 
-[node name="Capiango" type="CharacterBody2D"]
+[node name="Capiango" type="CharacterBody2D" groups=["Capiango"]]
 script = ExtResource("1_8yfwu")
 health = 10.0
 enemy_damage = 2.0

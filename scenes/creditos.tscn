@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dca4u5ll1ej0l"]
+
+[ext_resource type="Texture2D" uid="uid://dnaed2trfggav" path="res://assets/Menu Pausa editado.png" id="1_bw74c"]
+[ext_resource type="Script" path="res://scripts/creditos.gd" id="2_80top"]
+[ext_resource type="FontFile" uid="uid://cyau114wa6qrv" path="res://assets/Blackwood Castle.ttf" id="2_p5qom"]
+
+[node name="Node2D" type="Sprite2D"]
+position = Vector2(559, 393)
+scale = Vector2(5.76949, 4.73946)
+texture = ExtResource("1_bw74c")
+script = ExtResource("2_80top")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -81.2896
+offset_top = -71.9491
+offset_right = 165.71
+offset_bottom = 29.0509
+scale = Vector2(0.356196, 0.480239)
+theme_override_fonts/font = ExtResource("2_p5qom")
+text = "Diseño:
+Lucas Luján
+Emiliano Gabriel Barros
+Carlos Manuel Córdova Rendon
+
+Arte:
+Lucas Luján
+Miguel Angel Oller
+Carlos Manuel Córdova Rendon
+
+Producción:
+Miguel Angel Oller"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -1.38661
+offset_top = -73.004
+offset_right = 245.613
+offset_bottom = 187.996
+scale = Vector2(0.356196, 0.480239)
+theme_override_fonts/font = ExtResource("2_p5qom")
+text = "Programación:
+Matías Senitzky
+Emiliano Gabriel Barrios
+Federico Russo"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 15.9459
+offset_top = 4.00889
+offset_right = 23.9459
+offset_bottom = 12.0089
+scale = Vector2(0.0677681, 0.103076)
+theme_override_fonts/font = ExtResource("2_p5qom")
+theme_override_font_sizes/font_size = 100
+text = "Menú Principal"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var enemy_wander_state = $FiniteStateMachine/EnemyWanderState as EnemyWanderState
 @onready var enemy_chase_state = $FiniteStateMachine/EnemyChaseState as EnemyChaseState
 @onready var enemy_attack_state = $FiniteStateMachine/EnemyAttackState as EnemyAttackState
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player = get_tree().get_first_node_in_group("Player")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 var is_dead : bool = false

@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var minotauro_attack_state = $MinotauroStateMachine/MinotauroAttackState as MinotauroAttackState
 @onready var minotauro_hurt_state = $MinotauroStateMachine/MinotauroHurtState as MinotauroHurtState
 
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player = get_tree().get_first_node_in_group("Player")
 @onready var sprite : Sprite2D = $Sprite2D
 
 var direction : Vector2 = Vector2.ZERO

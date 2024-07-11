@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rmigijcsd6my"]
+
+[ext_resource type="Script" path="res://scripts/Salida.gd" id="1_e7qq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8uh"]
+
+[node name="Salida" type="Area2D"]
+position = Vector2(109, 80)
+scale = Vector2(1.96613, 2.30189)
+script = ExtResource("1_e7qq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35.6029, -13.0328)
+shape = SubResource("RectangleShape2D_ny8uh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

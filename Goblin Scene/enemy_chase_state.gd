@@ -4,7 +4,7 @@ extends GoblinState
 @export var actor: Enemy
 @export var animator: AnimatedSprite2D
 @export var vision_cast: RayCast2D
-@onready var player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 signal lost_player
 signal explode(body)

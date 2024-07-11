@@ -22,3 +22,6 @@ func _on_play_button_pressed():
 
 func _on_exit_button_pressed():
 	GameManager.exit_game()
+
+func _on_credits_button_pressed():
+	GameManager.transition_to_scene("res://scenes/creditos.tscn", null)
