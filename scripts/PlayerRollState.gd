@@ -17,7 +17,7 @@ func process_physics(delta : float) -> PlayerState:
 	return null
 
 func process_movement() -> void:
-	character.velocity = character.direction * move_speed
+	character.velocity = character.direction * 200
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "roll":

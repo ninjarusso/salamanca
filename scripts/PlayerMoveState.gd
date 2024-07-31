@@ -25,4 +25,4 @@ func process_input(event : InputEvent) -> PlayerState:
 
 func process_movement() -> void:
 	character.direction = Input.get_vector("left", "right", "up", "down")
-	character.velocity = character.direction * move_speed
+	character.velocity = character.direction * 90

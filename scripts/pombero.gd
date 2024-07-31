@@ -25,7 +25,7 @@ func _physics_process(delta):
 	if !is_dead:
 		if pombero_state_machine.current_state == pombero_chase_state:
 			direction = player.position - position
-			velocity = direction.normalized() * move_speed
+			velocity = direction.normalized() * 100
 		else:
 			velocity = Vector2.ZERO
 		
