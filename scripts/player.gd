@@ -57,7 +57,10 @@ func take_damage(damage : float) -> void:
 func recover_health(amount: float):
 	sorbo_mate.play()
 	health += amount
+	if health + amount >= 10:
+		health = 10
 	if health < 5:
 		health = 5
 	print("Health recovered: ", health)
 	vida_bar.vida = health
+	
