@@ -22,10 +22,10 @@ grow_vertical = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 505.0
-offset_top = 579.0
-offset_right = 618.0
-offset_bottom = 626.0
+offset_left = 309.0
+offset_top = 511.0
+offset_right = 422.0
+offset_bottom = 558.0
 theme = SubResource("Theme_y8pdb")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]

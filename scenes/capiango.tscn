@@ -593,7 +593,7 @@ states/Walk/position = Vector2(145, 248)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3j50j"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_88ewk"), "Walk", "Attack_1", SubResource("AnimationNodeStateMachineTransition_l7y20"), "Idle", "Attack_1", SubResource("AnimationNodeStateMachineTransition_cexk3"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_guypa"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_3g7yb"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_b6nnf"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_27px4"), "Attack_1", "Walk", SubResource("AnimationNodeStateMachineTransition_gjfge"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_vkvwc"), "Walk", "Death", SubResource("AnimationNodeStateMachineTransition_whs6a"), "Walk", "Hit", SubResource("AnimationNodeStateMachineTransition_w6gwl"), "Hit", "Walk", SubResource("AnimationNodeStateMachineTransition_k6pbn"), "Attack_1", "Idle", SubResource("AnimationNodeStateMachineTransition_jyfp6"), "Attack_1", "Hit", SubResource("AnimationNodeStateMachineTransition_cf06j")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drsho"]
-radius = 200.01
+radius = 364.049
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36q7g"]
 size = Vector2(65, 28)

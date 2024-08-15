@@ -4,7 +4,7 @@ var main_menu_screen = preload("res://scenes/main_menu.tscn")
 var level_1 = preload("res://nivel_1.tscn")
 var pause_menu_screen = preload("res://scenes/pause_menu.tscn")
 var level_2 = preload("res://scenes/nivel_2.tscn")
-
+var intro = preload("res://scenes/intro.tscn")
 var player : Player = null
 
 func _ready():
@@ -14,8 +14,9 @@ func start_game():
 	if get_tree().paused:
 		continue_game()
 		return
+	transition_to_scene(intro.resource_path, null)
+	return
 	
-	transition_to_scene(level_1.resource_path, null)
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):

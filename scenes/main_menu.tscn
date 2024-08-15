@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://b8weiis7sfq7u"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0rfpv"]
-[ext_resource type="Texture2D" uid="uid://by2xgq57bilj0" path="res://assets/fondo_titlescreen.png" id="2_1uh2k"]
-[ext_resource type="Texture2D" uid="uid://06s188hvdfy5" path="res://assets/play_button.png" id="2_tqd5c"]
-[ext_resource type="Texture2D" uid="uid://4amflqlb3ldg" path="res://assets/quit_button.png" id="3_r421v"]
-[ext_resource type="Texture2D" uid="uid://dbe2uylhb6y6b" path="res://assets/La Salamanca_Logo.png" id="4_cm2oj"]
+[ext_resource type="Texture2D" uid="uid://06s188hvdfy5" path="res://assets/play_button.png" id="2_n35rl"]
+[ext_resource type="Texture2D" uid="uid://4amflqlb3ldg" path="res://assets/quit_button.png" id="3_ppw06"]
+[ext_resource type="Texture2D" uid="uid://by2xgq57bilj0" path="res://assets/fondo_titlescreen.png" id="4_wxcpa"]
 [ext_resource type="AudioStream" uid="uid://dawpi4b307las" path="res://Musica/Jorge Cafrune - Orejano.mp3" id="5_yfore"]
-[ext_resource type="Texture2D" uid="uid://bdkhgnw3wds6e" path="res://assets/credits_button.png" id="7_5d4pb"]
+[ext_resource type="Texture2D" uid="uid://bdkhgnw3wds6e" path="res://assets/credits_button.png" id="6_2iydd"]
+[ext_resource type="Texture2D" uid="uid://dbe2uylhb6y6b" path="res://assets/La Salamanca_Logo.png" id="7_j1y4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfn5"]
 bg_color = Color(0, 0.630867, 0.97535, 1)
@@ -23,10 +23,8 @@ border_width_right = 1
 border_width_bottom = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aq785"]
-texture = ExtResource("2_tqd5c")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7au2m"]
-texture = ExtResource("2_tqd5c")
 
 [sub_resource type="Theme" id="Theme_2m8uv"]
 Button/styles/disabled = SubResource("StyleBoxFlat_0nfn5")
@@ -42,16 +40,10 @@ process_mode = 3
 layer = 2
 script = ExtResource("1_0rfpv")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 491.0
-offset_top = 236.0
-offset_right = 661.0
-offset_bottom = 410.0
-
 [node name="TitleBackground" type="Sprite2D" parent="."]
-position = Vector2(577, 325.5)
-scale = Vector2(1.154, 1.23619)
-texture = ExtResource("2_1uh2k")
+position = Vector2(361, 288)
+scale = Vector2(0.722, 1.10095)
+texture = ExtResource("4_wxcpa")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
@@ -77,30 +69,45 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("2_tqd5c")
+text = "
+"
+icon = ExtResource("2_n35rl")
 icon_alignment = 1
 
 [node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("3_r421v")
-
-[node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(578, 108.5)
-scale = Vector2(0.532432, 0.544271)
-texture = ExtResource("4_cm2oj")
+icon = ExtResource("3_ppw06")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_yfore")
 volume_db = -30.0
 autoplay = true
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 124.0
+offset_top = 36.0
+offset_right = -142.0
+offset_bottom = 167.0
+grow_horizontal = 2
+texture = ExtResource("7_j1y4s")
+expand_mode = 1
+
 [node name="CreditsButton" type="Button" parent="."]
-offset_left = 936.0
-offset_top = 570.0
-offset_right = 1621.0
-offset_bottom = 917.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 187.0
+offset_top = 161.0
+offset_right = 896.0
+offset_bottom = 508.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.164023, 0.158675)
-icon = ExtResource("7_5d4pb")
+icon = ExtResource("6_2iydd")
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

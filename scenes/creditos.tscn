@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://cyau114wa6qrv" path="res://assets/Blackwood Castle.ttf" id="2_p5qom"]
 
 [node name="Node2D" type="Sprite2D"]
-position = Vector2(559, 393)
-scale = Vector2(5.76949, 4.73946)
+position = Vector2(361.5, 288.497)
+scale = Vector2(3.29224, 3.47276)
 texture = ExtResource("1_bw74c")
 script = ExtResource("2_80top")
 
@@ -51,5 +51,7 @@ scale = Vector2(0.0677681, 0.103076)
 theme_override_fonts/font = ExtResource("2_p5qom")
 theme_override_font_sizes/font_size = 100
 text = "Menú Principal"
+
+[node name="Musica Creditos" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
