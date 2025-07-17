@@ -6,8 +6,8 @@ extends Sprite2D
 const lines : Array[String] = [
 	"Los controles para sobrevivir son los siguientes:",
 	"A=Izquierda S=Abajo W=Arriba D=Derecha",
-	"Espacio=Hacer roll  F=Interactuar",
-	"E = atacar(combo de 3 maximo)",
+	"Clic Derecho=Hacer roll  E=Interactuar",
+	"Clic Izquierdo= atacar(combo de 3 maximo)",
 	"\"De nada...\"",
 ]
 

@@ -33,7 +33,7 @@ size_flags_vertical = 4
 layout_mode = 2
 theme = SubResource("Theme_fed7t")
 theme_override_font_sizes/font_size = 50
-text = "Presiona F"
+text = "Presiona E"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_left = -101.0

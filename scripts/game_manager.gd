@@ -45,4 +45,3 @@ func transition_to_scene(scene_path, _player : Player):
 	if _player != null:
 		player = _player
 		get_tree().get_root().add_child(_player)
-
