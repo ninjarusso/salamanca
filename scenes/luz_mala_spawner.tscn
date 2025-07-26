@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dd0d0yorl8qxb"]
+[gd_scene load_steps=16 format=3 uid="uid://dd0d0yorl8qxb"]
 
 [ext_resource type="Texture2D" uid="uid://smjd87opv4a1" path="res://assets/EnemySpawner.png" id="1_s56xs"]
 [ext_resource type="Script" path="res://scripts/luz_mala_spawner.gd" id="2_dyhtp"]
@@ -21,6 +21,22 @@ atlas = ExtResource("1_s56xs")
 region = Rect2(256, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iok7k"]
+atlas = ExtResource("1_s56xs")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w28hr"]
+atlas = ExtResource("1_s56xs")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frsbi"]
+atlas = ExtResource("1_s56xs")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdop8"]
+atlas = ExtResource("1_s56xs")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivj8v"]
 atlas = ExtResource("1_s56xs")
 region = Rect2(0, 0, 64, 32)
 
@@ -55,6 +71,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w28hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frsbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdop8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivj8v")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lpejl"]
@@ -65,7 +98,7 @@ size = Vector2(43, 33)
 
 [node name="LuzMalaSpawner" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_nocij")
-animation = &"active"
+animation = &"inactive"
 autoplay = "idle"
 script = ExtResource("2_dyhtp")
 health = 6.0
@@ -86,3 +119,4 @@ shape = SubResource("RectangleShape2D_7jg4r")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -21,6 +21,11 @@ func _on_area_2d_body_entered(body):
 		timer.start()
 		self.play("active")
 
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if !is_dead:
+		timer.stop()
+		self.play("inactive")
+
 func take_damage(damage : float) -> void:
 	health -= damage
 	if health < 0:

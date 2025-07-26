@@ -504,7 +504,8 @@ texture = ExtResource("5_epgxw")
 texture_scale = 1.5
 
 [node name="LuzMalaSpawner2" parent="TileMap" instance=ExtResource("8_x5qfi")]
-position = Vector2(724, -739)
+position = Vector2(7465, -41)
+animation = &"idle"
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMap/LuzMalaSpawner2"]
 color = Color(0.660883, 0, 0.133975, 1)
